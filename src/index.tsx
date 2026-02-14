@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { AppProviders } from "@/app/providers/AppProviders";
+import Footer from "@/components/layout/Footer";
 import { Box, Container, Typography } from "@mui/material";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           </Typography>
         </Container>
       </Box>
+      <Footer />
     </AppProviders>
   );
 }

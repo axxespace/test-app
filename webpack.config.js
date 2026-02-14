@@ -33,7 +33,11 @@ export default {
           }
         }
       },
-      { test: /\.css$/, use: ["style-loader", "css-loader"] }
+      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      {
+        test: /\.(png|jpg|jpeg|svg|webp)$/i,
+        type: "asset/resource"
+      }
     ]
   },
   devServer: {
