@@ -1,14 +1,22 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { AppProviders } from "@/app/providers/AppProviders";
+import { Box, Container, Typography } from "@mui/material";
 
 function App() {
-    const unused = 123;
-
-    return (
-    <div style={{ padding: 24, fontFamily: "system-ui" }}>
-      <h1>Frontend test scaffold</h1>
-      <p>Webpack + React + TS</p>
-    </div>
+  return (
+    <AppProviders>
+      <Box sx={{ minHeight: "100vh", py: 6 }}>
+        <Container maxWidth="md">
+          <Typography variant="h3" fontWeight={800} gutterBottom>
+            Frontend test scaffold
+          </Typography>
+          <Typography sx={{ opacity: 0.8 }}>
+            React + TypeScript + Webpack + MUI + styled-components engine
+          </Typography>
+        </Container>
+      </Box>
+    </AppProviders>
   );
 }
 

@@ -11,6 +11,10 @@ export default {
   },
   devtool: "source-map",
   resolve: {
+    alias: {
+      "@": path.resolve(process.cwd(), "src"),
+      "@mui/styled-engine": "@mui/styled-engine-sc"
+    },
     extensions: [".ts", ".tsx", ".js"]
   },
   module: {
