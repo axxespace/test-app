@@ -1,19 +1,18 @@
 import * as React from "react";
-
-import mascot from "@/assets/footer/mascot.png";
-import brand from "@/assets/footer/brand.png";
-
 import { Box, Container, Typography, Button, Select, MenuItem, IconButton } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 
+import mascot from "@/assets/footer/mascot.png";
+import brand from "@/assets/footer/brand.png";
+
 import DownloadIcon from "@/assets/footer/download.svg";
 import LicenseIcon from "@/assets/footer/license.svg";
 import AgeLimitIcon from "@/assets/footer/age-limit.svg";
-import EmailIcon from "@/assets/footer/email.svg";
-import TelegramIcon from "@/assets/footer/telegram.svg";
-import XIcon from "@/assets/footer/x.svg";
-import InstagramIcon from "@/assets/footer/instagram.svg";
+import EmailIcon from "@/assets/footer/socials/email.svg";
+import TelegramIcon from "@/assets/footer/socials/telegram.svg";
+import XIcon from "@/assets/footer/socials/x.svg";
+import InstagramIcon from "@/assets/footer/socials/instagram.svg";
 import GermanyIcon from "@/assets/footer/countries/germany.svg";
 import GeorgiaIcon from "@/assets/footer/countries/goergia.svg";
 import ItalyIcon from "@/assets/footer/countries/italy.svg";
@@ -24,7 +23,7 @@ function fluidClampPx(minPx: number, maxPx: number, minVw = 1440, maxVw = 1920) 
   const slope = (maxPx - minPx) / (maxVw - minVw);
   const yIntercept = minPx - slope * minVw;
   return `clamp(${minPx}px, calc(${(slope * 100).toFixed(6)}vw + ${yIntercept.toFixed(
-      6
+    6
   )}px), ${maxPx}px)`;
 }
 
@@ -59,7 +58,7 @@ const INFO: readonly InfoRowItem[] = [
     icon: LicenseIcon,
     alt: "License",
     text: "Casino is certified by the Anjouan Gaming Authority",
-    maxWidth: 200
+    maxWidth: 287
   }
 ] as const;
 
@@ -89,15 +88,15 @@ const LABELS: Record<Lang, string> = {
 const LANGS: readonly Lang[] = ["en", "ge", "ger", "rus", "it"] as const;
 
 const SelectChevron = () => (
-    <svg width="35" height="35" viewBox="0 0 24 24" aria-hidden focusable="false">
-      <path
-          d="M7 10l5 5 5-5"
-          stroke="rgba(255,255,255,0.7)"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-      />
-    </svg>
+  <svg width="35" height="35" viewBox="0 0 24 24" aria-hidden focusable="false">
+    <path
+      d="M7 10l5 5 5-5"
+      stroke="rgba(255,255,255,0.7)"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
 );
 
 const Root = styled(Box)({
@@ -106,16 +105,13 @@ const Root = styled(Box)({
   background: "linear-gradient(90deg,#02011F 0%, #06225D 100%)"
 }) as typeof Box;
 
-
 const Inner = styled(Container)(({ theme }) => ({
   display: "grid",
-  alignItems: "center",
   gridTemplateColumns:
-      "minmax(200px, auto) minmax(320px, 390px) minmax(260px, 1fr) minmax(220px, 289px)",
+    "minmax(200px, auto) minmax(320px, 390px) minmax(260px, 1fr) minmax(220px, 289px)",
   columnGap: theme.spacing(8),
   paddingTop: theme.spacing(7.5),
   paddingBottom: theme.spacing(7.5),
-  paddingLeft: theme.spacing(4),
   paddingRight: theme.spacing(4),
   [theme.breakpoints.down("xxl")]: {
     columnGap: theme.spacing(5)
@@ -160,7 +156,7 @@ const PromoCard = styled(Box)(({ theme }) => ({
   boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
   marginLeft: "auto",
   marginRight: "auto",
-  position: "relative",
+  position: "relative"
 }));
 
 const SpotterBorderSvg = styled("svg")({
@@ -168,9 +164,8 @@ const SpotterBorderSvg = styled("svg")({
   inset: 0,
   width: "100%",
   height: "100%",
-  pointerEvents: "none",
+  pointerEvents: "none"
 });
-
 
 const BrandLogo = styled("img")({
   maxWidth: 176,
@@ -230,10 +225,10 @@ const Mid = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("xl")]: {
     flexDirection: "row",
     justifyContent: "center",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    order: 4
   },
   [theme.breakpoints.down("md")]: {
-    order: 3,
     flexDirection: "column",
     flexWrap: "nowrap"
   }
@@ -260,15 +255,16 @@ const InfoIcon = styled("img")({
 });
 
 const InfoText = styled(Typography)({
-  fontSize: 14,
-  lineHeight: "20px"
+  fontSize: 16,
+  lineHeight: "20px",
+  color: "rgba(251, 251, 251, 0.7)"
 });
 
 const Right = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-end",
-  marginTop: 100,
+  marginTop: 40,
   gap: theme.spacing(13.25),
   [theme.breakpoints.down("xl")]: {
     width: "100%",
@@ -370,93 +366,93 @@ export default function Footer() {
   const r = 16;
 
   return (
-      <Root component="footer">
-        <Inner maxWidth={false} disableGutters>
-          <MascotWrap>
-            <Mascot src={mascot} alt="Mascot" />
-          </MascotWrap>
+    <Root component="footer">
+      <Inner maxWidth={false} disableGutters>
+        <MascotWrap>
+          <Mascot src={mascot} alt="Mascot" />
+        </MascotWrap>
 
-          <PromoCard>
-            <SpotterBorderSvg aria-hidden="true">
-              <rect
-                  x={strokeWidth / 2}
-                  y={strokeWidth / 2}
-                  width={`calc(100% - ${strokeWidth}px)`}
-                  height={`calc(100% - ${strokeWidth}px)`}
-                  rx={r}
-                  ry={r}
-                  fill="none"
-                  stroke="#FFAA46"
-                  strokeWidth={strokeWidth}
-                  strokeDasharray="6 4"
-                  strokeLinecap="round"
-                  vectorEffect="non-scaling-stroke"
-              />
-            </SpotterBorderSvg>
+        <PromoCard>
+          <SpotterBorderSvg aria-hidden="true">
+            <rect
+              x={strokeWidth / 2}
+              y={strokeWidth / 2}
+              width={`calc(100% - ${strokeWidth}px)`}
+              height={`calc(100% - ${strokeWidth}px)`}
+              rx={r}
+              ry={r}
+              fill="none"
+              stroke="#FFAA46"
+              strokeWidth={strokeWidth}
+              strokeDasharray="6 4"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </SpotterBorderSvg>
 
-            <BrandLogo src={brand} alt="Brand" />
-            <Title>Download Casino</Title>
-            <Subtitle>Play Min anywhere, anytime</Subtitle>
+          <BrandLogo src={brand} alt="Brand" />
+          <Title>Download Casino</Title>
+          <Subtitle>Play Min anywhere, anytime</Subtitle>
 
-            <InstallButton disableElevation>
-              <Box component="img" src={DownloadIcon} alt="" aria-hidden sx={{ width: 24 }} />
-              Install App
-            </InstallButton>
-          </PromoCard>
+          <InstallButton disableElevation>
+            <Box component="img" src={DownloadIcon} alt="" aria-hidden sx={{ width: 24 }} />
+            Install App
+          </InstallButton>
+        </PromoCard>
 
-          <Mid>
-            {INFO.map((row) => (
-                <InfoRow key={row.id}>
-                  <InfoIcon src={row.icon} alt={row.alt} />
-                  <InfoText sx={row.maxWidth ? { maxWidth: row.maxWidth } : undefined}>
-                    {row.text}
-                  </InfoText>
-                </InfoRow>
+        <Mid>
+          {INFO.map((row) => (
+            <InfoRow key={row.id}>
+              <InfoIcon src={row.icon} alt={row.alt} />
+              <InfoText sx={row.maxWidth ? { maxWidth: row.maxWidth } : undefined}>
+                {row.text}
+              </InfoText>
+            </InfoRow>
+          ))}
+        </Mid>
+
+        <Right>
+          <LanguageSelect
+            value={lang}
+            onChange={handleLangChange}
+            IconComponent={SelectChevron}
+            renderValue={(value) => (
+              <SelectValue>
+                <Flag src={FLAGS[value]} alt="" aria-hidden />
+                <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[value]}</Typography>
+              </SelectValue>
+            )}
+          >
+            {LANGS.map((l) => (
+              <MenuItem key={l} value={l} sx={{ gap: 1 }}>
+                <FlagSmall src={FLAGS[l]} alt="" aria-hidden />
+                <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[l]}</Typography>
+              </MenuItem>
             ))}
-          </Mid>
+          </LanguageSelect>
 
-          <Right>
-            <LanguageSelect
-                value={lang}
-                onChange={handleLangChange}
-                IconComponent={SelectChevron}
-                renderValue={(value) => (
-                    <SelectValue>
-                      <Flag src={FLAGS[value]} alt="" aria-hidden />
-                      <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[value]}</Typography>
-                    </SelectValue>
-                )}
-            >
-              {LANGS.map((l) => (
-                  <MenuItem key={l} value={l} sx={{ gap: 1 }}>
-                    <FlagSmall src={FLAGS[l]} alt="" aria-hidden />
-                    <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[l]}</Typography>
-                  </MenuItem>
+          <SocialRow>
+            <Typography variant="caption" sx={{ fontSize: 16, color: "#BABABA", lineHeight: 1 }}>
+              Us on social media:
+            </Typography>
+
+            <SocialButtons>
+              {SOCIALS.map((s) => (
+                <SocialButton
+                  key={s.id}
+                  component="a"
+                  href={s.href}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={s.label}
+                >
+                  <SocialIcon src={s.icon} alt="" aria-hidden />
+                </SocialButton>
               ))}
-            </LanguageSelect>
-
-            <SocialRow>
-              <Typography variant="caption" sx={{ opacity: 0.75 }}>
-                Us on social media:
-              </Typography>
-
-              <SocialButtons>
-                {SOCIALS.map((s) => (
-                    <SocialButton
-                        key={s.id}
-                        component="a"
-                        href={s.href}
-                        target={s.href.startsWith("http") ? "_blank" : undefined}
-                        rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        aria-label={s.label}
-                    >
-                      <SocialIcon src={s.icon} alt="" aria-hidden />
-                    </SocialButton>
-                ))}
-              </SocialButtons>
-            </SocialRow>
-          </Right>
-        </Inner>
-      </Root>
+            </SocialButtons>
+          </SocialRow>
+        </Right>
+      </Inner>
+    </Root>
   );
 }
