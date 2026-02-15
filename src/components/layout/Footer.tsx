@@ -4,6 +4,7 @@ import mascot from "@/assets/footer/mascot.png";
 import brand from "@/assets/footer/brand.png";
 
 import { Box, Container, Typography, Button, Select, MenuItem, IconButton } from "@mui/material";
+import type { SelectChangeEvent } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 
 import DownloadIcon from "@/assets/footer/download.svg";
@@ -23,13 +24,15 @@ function fluidClampPx(minPx: number, maxPx: number, minVw = 1440, maxVw = 1920) 
   const slope = (maxPx - minPx) / (maxVw - minVw);
   const yIntercept = minPx - slope * minVw;
   return `clamp(${minPx}px, calc(${(slope * 100).toFixed(6)}vw + ${yIntercept.toFixed(
-    6
+      6
   )}px), ${maxPx}px)`;
 }
 
+type ImgSrc = string;
+
 type InfoRowItem = {
   id: "age" | "license";
-  icon: string;
+  icon: ImgSrc;
   alt: string;
   text: string;
   maxWidth?: number;
@@ -38,9 +41,64 @@ type InfoRowItem = {
 type SocialItem = {
   id: "instagram" | "telegram" | "x" | "email";
   label: string;
-  icon: string;
+  icon: ImgSrc;
   href: string;
 };
+
+type Lang = "ge" | "en" | "ger" | "it" | "rus";
+
+const INFO: readonly InfoRowItem[] = [
+  {
+    id: "age",
+    icon: AgeLimitIcon,
+    alt: "18+ Age limit",
+    text: "Only 18+"
+  },
+  {
+    id: "license",
+    icon: LicenseIcon,
+    alt: "License",
+    text: "Casino is certified by the Anjouan Gaming Authority",
+    maxWidth: 200
+  }
+] as const;
+
+const SOCIALS: readonly SocialItem[] = [
+  { id: "instagram", label: "Instagram", icon: InstagramIcon, href: "https://instagram.com" },
+  { id: "telegram", label: "Telegram", icon: TelegramIcon, href: "https://t.me" },
+  { id: "x", label: "X", icon: XIcon, href: "https://x.com" },
+  { id: "email", label: "Email", icon: EmailIcon, href: "mailto:support@example.com" }
+] as const;
+
+const FLAGS: Record<Lang, ImgSrc> = {
+  ge: GeorgiaIcon,
+  en: EnglandIcon,
+  it: ItalyIcon,
+  rus: RussiaIcon,
+  ger: GermanyIcon
+};
+
+const LABELS: Record<Lang, string> = {
+  ge: "Georgian",
+  en: "English",
+  it: "Italian",
+  rus: "Russian",
+  ger: "German"
+};
+
+const LANGS: readonly Lang[] = ["en", "ge", "ger", "rus", "it"] as const;
+
+const SelectChevron = () => (
+    <svg width="35" height="35" viewBox="0 0 24 24" aria-hidden focusable="false">
+      <path
+          d="M7 10l5 5 5-5"
+          stroke="rgba(255,255,255,0.7)"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+      />
+    </svg>
+);
 
 const Root = styled(Box)({
   width: "100%",
@@ -48,11 +106,12 @@ const Root = styled(Box)({
   background: "linear-gradient(90deg,#02011F 0%, #06225D 100%)"
 }) as typeof Box;
 
+
 const Inner = styled(Container)(({ theme }) => ({
   display: "grid",
   alignItems: "center",
   gridTemplateColumns:
-    "minmax(200px, auto) minmax(320px, 390px) minmax(260px, 1fr) minmax(220px, 289px)",
+      "minmax(200px, auto) minmax(320px, 390px) minmax(260px, 1fr) minmax(220px, 289px)",
   columnGap: theme.spacing(8),
   paddingTop: theme.spacing(7.5),
   paddingBottom: theme.spacing(7.5),
@@ -73,7 +132,7 @@ const Inner = styled(Container)(({ theme }) => ({
 
 const MascotWrap = styled(Box)(({ theme }) => ({
   display: "none",
-  [theme.breakpoints.up("lg")]: {
+  [theme.breakpoints.up("xl")]: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
@@ -100,8 +159,18 @@ const PromoCard = styled(Box)(({ theme }) => ({
   background: "rgba(10, 14, 40, 0.55)",
   boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
   marginLeft: "auto",
-  marginRight: "auto"
+  marginRight: "auto",
+  position: "relative",
 }));
+
+const SpotterBorderSvg = styled("svg")({
+  position: "absolute",
+  inset: 0,
+  width: "100%",
+  height: "100%",
+  pointerEvents: "none",
+});
+
 
 const BrandLogo = styled("img")({
   maxWidth: 176,
@@ -132,6 +201,26 @@ export const InstallButton = styled(Button)({
     opacity: 0.85
   }
 });
+
+const Title = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(3),
+  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", sans-serif',
+  fontWeight: 860,
+  fontSize: 32,
+  lineHeight: "40px",
+  letterSpacing: "0",
+  textAlign: "center"
+}));
+
+const Subtitle = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(0.75),
+  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", sans-serif',
+  fontWeight: 600,
+  fontSize: 16,
+  lineHeight: "22px",
+  letterSpacing: 0,
+  textAlign: "center"
+}));
 
 const Mid = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -165,39 +254,29 @@ const InfoRow = styled(Box)(({ theme }) => ({
   }
 }));
 
+const InfoIcon = styled("img")({
+  width: 58,
+  height: 58
+});
+
+const InfoText = styled(Typography)({
+  fontSize: 14,
+  lineHeight: "20px"
+});
+
 const Right = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-end",
-  marginTop: theme.spacing(12.5),
+  marginTop: 100,
   gap: theme.spacing(13.25),
-  [theme.breakpoints.down("lg")]: {
+  [theme.breakpoints.down("xl")]: {
     width: "100%",
     marginTop: 0,
     gap: theme.spacing(7.5),
     alignItems: "center"
   }
 }));
-
-type Lang = "ge" | "en" | "ger" | "it" | "rus";
-
-const FLAGS: Record<Lang, string> = {
-  ge: GeorgiaIcon,
-  en: EnglandIcon,
-  it: ItalyIcon,
-  rus: RussiaIcon,
-  ger: GermanyIcon
-};
-
-const LABELS: Record<Lang, string> = {
-  ge: "Georgian",
-  en: "English",
-  it: "Italian",
-  rus: "Russian",
-  ger: "German"
-};
-
-const LANGS: readonly Lang[] = ["en", "ge", "ger", "rus", "it"] as const;
 
 const LanguageSelect = styled(Select<Lang>)(() => ({
   width: "100%",
@@ -226,187 +305,158 @@ const LanguageSelect = styled(Select<Lang>)(() => ({
     alignItems: "center",
     gap: 12
   },
+
   "& .MuiSelect-icon": {
     right: 18,
     color: "rgba(255,255,255,0.7)"
   }
 }));
 
+const SelectValue = styled(Box)({
+  padding: "0 !important",
+  display: "flex",
+  alignItems: "center",
+  gap: 12
+});
+
+const Flag = styled("img")({
+  width: 24,
+  height: 24,
+  borderRadius: "50%",
+  objectFit: "cover"
+});
+
+const FlagSmall = styled("img")({
+  width: 20,
+  height: 20,
+  borderRadius: "50%",
+  objectFit: "cover"
+});
+
 const SocialRow = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-end",
   gap: theme.spacing(1.5),
-  [theme.breakpoints.down("lg")]: {
+  [theme.breakpoints.down("xl")]: {
     alignItems: "center"
   }
 }));
 
-const Title = styled(Typography)(({ theme }) => ({
-  marginTop: theme.spacing(3),
-  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", sans-serif',
-  fontWeight: 860,
-  fontSize: 32,
-  lineHeight: "40px",
-  letterSpacing: "0",
-  textAlign: "center"
-}));
+const SocialButtons = styled(Box)({
+  display: "flex"
+});
 
-const Subtitle = styled(Typography)(({ theme }) => ({
-  marginTop: theme.spacing(0.75),
-  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", sans-serif',
-  fontWeight: 600,
-  fontSize: 16,
-  lineHeight: "22px",
-  letterSpacing: 0,
-  textAlign: "center"
-}));
+const SocialButton = styled(IconButton)({
+  padding: 2,
+  "&:hover": {
+    backgroundColor: "rgba(255,255,255,0.10)"
+  }
+}) as typeof IconButton;
+
+const SocialIcon = styled("img")({
+  width: 52,
+  height: 52
+});
 
 export default function Footer() {
-  const info: readonly InfoRowItem[] = [
-    {
-      id: "age",
-      icon: AgeLimitIcon,
-      alt: "18+ Age limit",
-      text: "Only 18+"
-    },
-    {
-      id: "license",
-      icon: LicenseIcon,
-      alt: "License",
-      text: "Casino is certified by the Anjouan Gaming Authority",
-      maxWidth: 200
-    }
-  ] as const;
-
-  const socials: readonly SocialItem[] = [
-    { id: "instagram", label: "Instagram", icon: InstagramIcon, href: "https://instagram.com" },
-    { id: "telegram", label: "Telegram", icon: TelegramIcon, href: "https://t.me" },
-    { id: "x", label: "X", icon: XIcon, href: "https://x.com" },
-    { id: "email", label: "Email", icon: EmailIcon, href: "mailto:support@example.com" }
-  ] as const;
-
   const [lang, setLang] = React.useState<Lang>("en");
 
+  const handleLangChange = (e: SelectChangeEvent<Lang>) => {
+    setLang(e.target.value as Lang);
+  };
+
+  const strokeWidth = 0.8;
+  const r = 16;
+
   return (
-    <Root component="footer">
-      <Inner maxWidth={false} disableGutters>
-        <MascotWrap>
-          <Mascot src={mascot} alt="Mascot" />
-        </MascotWrap>
+      <Root component="footer">
+        <Inner maxWidth={false} disableGutters>
+          <MascotWrap>
+            <Mascot src={mascot} alt="Mascot" />
+          </MascotWrap>
 
-        <PromoCard>
-          <BrandLogo src={brand} alt="Brand" />
-          <Title variant="h3">Download Casino</Title>
-          <Subtitle>Play Min anywhere, anytime</Subtitle>
-
-          <InstallButton fullWidth disableElevation>
-            <Box component="img" src={DownloadIcon} alt="" aria-hidden sx={{ width: 24 }} />
-            Install App
-          </InstallButton>
-        </PromoCard>
-
-        <Mid>
-          {info.map((row) => (
-            <InfoRow key={row.id}>
-              <Box component="img" src={row.icon} alt={row.alt} sx={{ width: 58 }} />
-              <Typography
-                variant="body2"
-                sx={row.maxWidth ? { maxWidth: row.maxWidth } : undefined}
-              >
-                {row.text}
-              </Typography>
-            </InfoRow>
-          ))}
-        </Mid>
-
-        <Right>
-          <LanguageSelect
-            value={lang}
-            onChange={(e) => setLang(e.target.value as Lang)}
-            IconComponent={() => (
-              <svg width="35" height="35" viewBox="0 0 24 24">
-                <path
-                  d="M7 10l5 5 5-5"
-                  stroke="rgba(255,255,255,0.7)"
+          <PromoCard>
+            <SpotterBorderSvg aria-hidden="true">
+              <rect
+                  x={strokeWidth / 2}
+                  y={strokeWidth / 2}
+                  width={`calc(100% - ${strokeWidth}px)`}
+                  height={`calc(100% - ${strokeWidth}px)`}
+                  rx={r}
+                  ry={r}
                   fill="none"
+                  stroke="#FFAA46"
+                  strokeWidth={strokeWidth}
+                  strokeDasharray="6 4"
                   strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            )}
-            renderValue={(v) => {
-              const value = v as Lang;
+                  vectorEffect="non-scaling-stroke"
+              />
+            </SpotterBorderSvg>
 
-              return (
-                <Box
-                  sx={{ padding: "0 !important", display: "flex", alignItems: "center", gap: 1.5 }}
-                >
-                  <Box
-                    component="img"
-                    src={FLAGS[value]}
-                    alt=""
-                    aria-hidden
-                    sx={{
-                      width: 24,
-                      height: 24,
-                      borderRadius: "50%",
-                      objectFit: "cover"
-                    }}
-                  />
-                  <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[value]}</Typography>
-                </Box>
-              );
-            }}
-          >
-            {LANGS.filter((l) => l !== lang).map((l) => (
-              <MenuItem key={l} value={l} sx={{ gap: 1 }}>
-                <Box
-                  component="img"
-                  src={FLAGS[l]}
-                  alt=""
-                  aria-hidden
-                  sx={{
-                    width: 20,
-                    height: 20,
-                    borderRadius: "50%",
-                    objectFit: "cover"
-                  }}
-                />
-                {LABELS[l]}
-              </MenuItem>
+            <BrandLogo src={brand} alt="Brand" />
+            <Title>Download Casino</Title>
+            <Subtitle>Play Min anywhere, anytime</Subtitle>
+
+            <InstallButton disableElevation>
+              <Box component="img" src={DownloadIcon} alt="" aria-hidden sx={{ width: 24 }} />
+              Install App
+            </InstallButton>
+          </PromoCard>
+
+          <Mid>
+            {INFO.map((row) => (
+                <InfoRow key={row.id}>
+                  <InfoIcon src={row.icon} alt={row.alt} />
+                  <InfoText sx={row.maxWidth ? { maxWidth: row.maxWidth } : undefined}>
+                    {row.text}
+                  </InfoText>
+                </InfoRow>
             ))}
-          </LanguageSelect>
+          </Mid>
 
-          <SocialRow>
-            <Typography variant="caption" sx={{ opacity: 0.75 }}>
-              Us on social media:
-            </Typography>
-
-            <Box sx={{ display: "flex" }}>
-              {socials.map((s) => (
-                <IconButton
-                  key={s.id}
-                  component="a"
-                  href={s.href}
-                  target={s.href.startsWith("http") ? "_blank" : undefined}
-                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  sx={{ padding: "2px", "&:hover": { backgroundColor: "rgba(255,255,255,0.10)" } }}
-                  aria-label={s.label}
-                >
-                  <Box
-                    component="img"
-                    src={s.icon}
-                    alt=""
-                    aria-hidden
-                    sx={{ width: 52, height: 52 }}
-                  />
-                </IconButton>
+          <Right>
+            <LanguageSelect
+                value={lang}
+                onChange={handleLangChange}
+                IconComponent={SelectChevron}
+                renderValue={(value) => (
+                    <SelectValue>
+                      <Flag src={FLAGS[value]} alt="" aria-hidden />
+                      <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[value]}</Typography>
+                    </SelectValue>
+                )}
+            >
+              {LANGS.map((l) => (
+                  <MenuItem key={l} value={l} sx={{ gap: 1 }}>
+                    <FlagSmall src={FLAGS[l]} alt="" aria-hidden />
+                    <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[l]}</Typography>
+                  </MenuItem>
               ))}
-            </Box>
-          </SocialRow>
-        </Right>
-      </Inner>
-    </Root>
+            </LanguageSelect>
+
+            <SocialRow>
+              <Typography variant="caption" sx={{ opacity: 0.75 }}>
+                Us on social media:
+              </Typography>
+
+              <SocialButtons>
+                {SOCIALS.map((s) => (
+                    <SocialButton
+                        key={s.id}
+                        component="a"
+                        href={s.href}
+                        target={s.href.startsWith("http") ? "_blank" : undefined}
+                        rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        aria-label={s.label}
+                    >
+                      <SocialIcon src={s.icon} alt="" aria-hidden />
+                    </SocialButton>
+                ))}
+              </SocialButtons>
+            </SocialRow>
+          </Right>
+        </Inner>
+      </Root>
   );
 }
