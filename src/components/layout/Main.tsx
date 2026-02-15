@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Box, Button } from "@mui/material";
-import type { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+
+import { AppImage, GradientButton } from "@/components/ui/common";
 
 import GameModal from "@/components/game/GameModal";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -9,43 +9,6 @@ import { useI18n } from "@/i18n/I18nProvider";
 import BackgroundImage from "@/assets/main/background.png";
 import BrandImage from "@/assets/footer/brand.png";
 import SlotImage from "@/assets/main/slot.png";
-
-const StyledImage = styled(Box)<BoxProps<"img">>(() => ({
-  height: "auto",
-  width: "100%",
-  display: "block",
-  marginLeft: "auto",
-  marginRight: "auto"
-}));
-
-interface StyledButtonProps {
-  btnWidth?: number | string;
-}
-
-export const StyledButton = styled(Button, {
-  shouldForwardProp: (prop) => prop !== "btnWidth"
-})<StyledButtonProps>(({ btnWidth = 250 }) => ({
-  margin: "32px auto",
-  display: "flex",
-  width: btnWidth,
-  height: 56,
-  borderRadius: 12,
-  padding: "8px 24px",
-  gap: 15,
-  color: "#fff",
-  boxShadow: "none",
-  background: "linear-gradient(to right, #FF8D6B, #FFBA47)",
-  fontSize: 16,
-  textTransform: "uppercase",
-  "&:hover": {
-    background: "linear-gradient(to right, #FF8D6B, #FFBA47)",
-    opacity: 0.9,
-    boxShadow: "none"
-  },
-  "&:active": {
-    opacity: 0.85
-  }
-}));
 
 const MainSection = styled("main")(({ theme }) => ({
   height: 910,
@@ -79,12 +42,12 @@ export default function Main() {
 
   return (
     <MainSection>
-      <StyledImage component="img" src={BrandImage} maxWidth={264} />
-      <StyledImage component="img" src={SlotImage} sx={{ maxWidth: "326px", mt: "48px" }} />
+      <AppImage component="img" src={BrandImage} maxWidth={264} />
+      <AppImage component="img" src={SlotImage} sx={{ maxWidth: "326px", mt: "48px" }} />
 
-      <StyledButton onClick={() => setOpenGame(true)} btnWidth={"358px"} disableElevation>
+      <GradientButton onClick={() => setOpenGame(true)} btnWidth={"358px"} disableElevation>
         {t("main.openGame")}
-      </StyledButton>
+      </GradientButton>
 
       <GameModal
         open={openGame}

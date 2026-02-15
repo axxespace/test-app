@@ -1,7 +1,9 @@
 import * as React from "react";
-import { Box, Container, Typography, Button, Select, MenuItem, IconButton } from "@mui/material";
+import { Box, Container, Typography, Select, MenuItem, IconButton } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
+
+import { AppImage, GradientButton } from "@/components/ui/common";
 
 import MascotImage from "@/assets/footer/mascot.png";
 import BrandImage from "@/assets/footer/brand.png";
@@ -157,36 +159,6 @@ const SpotterBorderSvg = styled("svg")({
   width: "100%",
   height: "100%",
   pointerEvents: "none"
-});
-
-const BrandLogo = styled("img")({
-  maxWidth: 176,
-  height: "auto",
-  width: "100%",
-  display: "block",
-  margin: "0 auto 10px"
-});
-
-export const InstallButton = styled(Button)({
-  margin: "18px auto",
-  display: "flex",
-  width: 250,
-  height: 56,
-  borderRadius: 12,
-  padding: "8px 24px",
-  gap: 15,
-  textTransform: "none",
-  color: "#fff",
-  boxShadow: "none",
-  background: "linear-gradient(to right, #FF8D6B, #FFBA47)",
-  "&:hover": {
-    background: "linear-gradient(to right, #FF8D6B, #FFBA47)",
-    opacity: 0.9,
-    boxShadow: "none"
-  },
-  "&:active": {
-    opacity: 0.85
-  }
 });
 
 const Title = styled(Typography)(({ theme }) => ({
@@ -384,14 +356,15 @@ export default function Footer() {
             />
           </SpotterBorderSvg>
 
-          <BrandLogo src={BrandImage} alt="Brand" />
+          <AppImage component="img" src={BrandImage} maxWidth={176} alt="Brand" />
+
           <Title>{t("footer.promo.title")}</Title>
           <Subtitle>{t("footer.promo.subtitle")}</Subtitle>
 
-          <InstallButton disableElevation>
+          <GradientButton sx={{ margin: "18px auto" }} disableElevation>
             <Box component="img" src={DownloadIcon} alt="" aria-hidden sx={{ width: 24 }} />
             {t("footer.promo.install")}
-          </InstallButton>
+          </GradientButton>
         </PromoCard>
 
         <Mid>
