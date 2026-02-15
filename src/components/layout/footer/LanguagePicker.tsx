@@ -1,0 +1,48 @@
+import * as React from "react";
+import { MenuItem, Typography } from "@mui/material";
+import type { SelectChangeEvent } from "@mui/material/Select";
+
+import { FLAGS, LANGS, langKey } from "@/components/layout/footer/constants";
+import { Flag, FlagSmall, LanguageSelect, SelectValue } from "@/components/layout/footer/styles";
+import { useI18n, type Lang } from "@/i18n/I18nProvider";
+
+const SelectChevron = () => (
+  <svg width="35" height="35" viewBox="0 0 24 24" aria-hidden focusable="false">
+    <path
+      d="M7 10l5 5 5-5"
+      stroke="rgba(255,255,255,0.7)"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export default function LanguagePicker() {
+  const { lang, setLang, t } = useI18n();
+
+  const handleLangChange = (e: SelectChangeEvent<Lang>) => {
+    setLang(e.target.value as Lang);
+  };
+
+  return (
+    <LanguageSelect
+      value={lang}
+      onChange={handleLangChange}
+      IconComponent={SelectChevron}
+      renderValue={(value) => (
+        <SelectValue>
+          <Flag src={FLAGS[value]} alt="" aria-hidden />
+          <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{t(langKey(value))}</Typography>
+        </SelectValue>
+      )}
+    >
+      {LANGS.map((l) => (
+        <MenuItem key={l} value={l} sx={{ gap: 1 }}>
+          <FlagSmall src={FLAGS[l]} alt="" aria-hidden />
+          <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{t(langKey(l))}</Typography>
+        </MenuItem>
+      ))}
+    </LanguageSelect>
+  );
+}
