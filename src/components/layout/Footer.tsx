@@ -13,6 +13,11 @@ import EmailIcon from "@/assets/footer/email.svg";
 import TelegramIcon from "@/assets/footer/telegram.svg";
 import XIcon from "@/assets/footer/x.svg";
 import InstagramIcon from "@/assets/footer/instagram.svg";
+import GermanyIcon from "@/assets/footer/countries/germany.svg";
+import GeorgiaIcon from "@/assets/footer/countries/goergia.svg";
+import ItalyIcon from "@/assets/footer/countries/italy.svg";
+import RussiaIcon from "@/assets/footer/countries/russia.svg";
+import EnglandIcon from "@/assets/footer/countries/england.svg";
 
 function fluidClampPx(minPx: number, maxPx: number, minVw = 1440, maxVw = 1920) {
   const slope = (maxPx - minPx) / (maxVw - minVw);
@@ -40,7 +45,6 @@ type SocialItem = {
 const Root = styled(Box)({
   width: "100%",
   margin: 0,
-  color: "rgba(233,236,255,0.95)",
   background: "linear-gradient(90deg,#02011F 0%, #06225D 100%)"
 }) as typeof Box;
 
@@ -175,32 +179,58 @@ const Right = styled(Box)(({ theme }) => ({
   }
 }));
 
-const LanguageSelect = styled(Select)({
+type Lang = "ge" | "en" | "ger" | "it" | "rus";
+
+const FLAGS: Record<Lang, string> = {
+  ge: GeorgiaIcon,
+  en: EnglandIcon,
+  it: ItalyIcon,
+  rus: RussiaIcon,
+  ger: GermanyIcon
+};
+
+const LABELS: Record<Lang, string> = {
+  ge: "Georgian",
+  en: "English",
+  it: "Italian",
+  rus: "Russian",
+  ger: "German"
+};
+
+const LANGS: readonly Lang[] = ["en", "ge", "ger", "rus", "it"] as const;
+
+const LanguageSelect = styled(Select<Lang>)(() => ({
   width: "100%",
+  paddingRight: 12,
   maxWidth: 289,
   minWidth: 0,
   overflow: "hidden",
   height: 56,
   borderRadius: 8,
-  border: "1px solid rgba(255, 255, 255, 0.1)",
-  color: "rgba(233,236,255,0.9)",
-  ".MuiSelect-select": {
-    padding: 12,
-    display: "flex",
-    alignItems: "center",
-    height: "100%",
-    boxSizing: "border-box"
-  },
-  ".MuiOutlinedInput-notchedOutline": {
+  background: "rgba(255, 255, 255, 0.1)",
+
+  "& .MuiOutlinedInput-notchedOutline": {
     borderColor: "rgba(255,255,255,0.10)"
   },
+
   "&:hover .MuiOutlinedInput-notchedOutline": {
-    borderColor: "rgba(255,255,255,0.18)"
+    borderColor: "rgba(255,255,255,0.10)"
   },
-  ".MuiSvgIcon-root": {
-    color: "rgba(233,236,255,0.75)"
+
+  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: "rgba(255,255,255,0.10)"
+  },
+
+  "& .MuiSelect-select": {
+    display: "flex",
+    alignItems: "center",
+    gap: 12
+  },
+  "& .MuiSelect-icon": {
+    right: 18,
+    color: "rgba(255,255,255,0.7)"
   }
-});
+}));
 
 const SocialRow = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -256,6 +286,8 @@ export default function Footer() {
     { id: "email", label: "Email", icon: EmailIcon, href: "mailto:support@example.com" }
   ] as const;
 
+  const [lang, setLang] = React.useState<Lang>("en");
+
   return (
     <Root component="footer">
       <Inner maxWidth={false} disableGutters>
@@ -289,10 +321,61 @@ export default function Footer() {
         </Mid>
 
         <Right>
-          <LanguageSelect value="tr" size="small">
-            <MenuItem value="tr">🇹🇷 Turkish</MenuItem>
-            <MenuItem value="en">🇬🇧 English</MenuItem>
-            <MenuItem value="ru">🇷🇺 Russian</MenuItem>
+          <LanguageSelect
+            value={lang}
+            onChange={(e) => setLang(e.target.value as Lang)}
+            IconComponent={() => (
+              <svg width="35" height="35" viewBox="0 0 24 24">
+                <path
+                  d="M7 10l5 5 5-5"
+                  stroke="rgba(255,255,255,0.7)"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
+            renderValue={(v) => {
+              const value = v as Lang;
+
+              return (
+                <Box
+                  sx={{ padding: "0 !important", display: "flex", alignItems: "center", gap: 1.5 }}
+                >
+                  <Box
+                    component="img"
+                    src={FLAGS[value]}
+                    alt=""
+                    aria-hidden
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: "50%",
+                      objectFit: "cover"
+                    }}
+                  />
+                  <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[value]}</Typography>
+                </Box>
+              );
+            }}
+          >
+            {LANGS.filter((l) => l !== lang).map((l) => (
+              <MenuItem key={l} value={l} sx={{ gap: 1 }}>
+                <Box
+                  component="img"
+                  src={FLAGS[l]}
+                  alt=""
+                  aria-hidden
+                  sx={{
+                    width: 20,
+                    height: 20,
+                    borderRadius: "50%",
+                    objectFit: "cover"
+                  }}
+                />
+                {LABELS[l]}
+              </MenuItem>
+            ))}
           </LanguageSelect>
 
           <SocialRow>
@@ -303,14 +386,13 @@ export default function Footer() {
             <Box sx={{ display: "flex" }}>
               {socials.map((s) => (
                 <IconButton
+                  key={s.id}
                   component="a"
                   href={s.href}
-                  target=""
-                  rel=""
-                  sx={{
-                    padding: "2px",
-                    "&:hover": { backgroundColor: "rgba(255,255,255,0.10)" }
-                  }}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  sx={{ padding: "2px", "&:hover": { backgroundColor: "rgba(255,255,255,0.10)" } }}
+                  aria-label={s.label}
                 >
                   <Box
                     component="img"

@@ -1,0 +1,33 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <clipPath id="circle">
+            <circle cx="256" cy="256" r="256"/>
+        </clipPath>
+    </defs>
+
+    <g clip-path="url(#circle)">
+        <rect width="512" height="512" fill="#FFFFFF"/>
+
+        <!-- Big central cross -->
+        <rect x="216" y="0" width="80" height="512" fill="#E8112D"/>
+        <rect x="0" y="216" width="512" height="80" fill="#E8112D"/>
+
+        <!-- Top-left cross -->
+        <g fill="#E8112D">
+            <rect x="64" y="96" width="96" height="32"/>
+            <rect x="96" y="64" width="32" height="96"/>
+
+            <!-- Top-right -->
+            <rect x="352" y="96" width="96" height="32"/>
+            <rect x="384" y="64" width="32" height="96"/>
+
+            <!-- Bottom-left -->
+            <rect x="64" y="384" width="96" height="32"/>
+            <rect x="96" y="352" width="32" height="96"/>
+
+            <!-- Bottom-right -->
+            <rect x="352" y="384" width="96" height="32"/>
+            <rect x="384" y="352" width="32" height="96"/>
+        </g>
+    </g>
+</svg>
