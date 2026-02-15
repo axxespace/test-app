@@ -17,7 +17,9 @@ export const DICT: Record<Lang, Record<string, string>> = {
     "footer.info.age": "Only 18+",
     "footer.info.license": "Casino is certified by the Anjouan Gaming Authority",
 
-    "footer.socials.title": "Us on social media:"
+    "footer.socials.title": "Us on social media:",
+
+    "main.openGame": "Open the game"
   },
 
   ge: {
@@ -27,14 +29,16 @@ export const DICT: Record<Lang, Record<string, string>> = {
     "lang.rus": "რუსული",
     "lang.it": "იტალიური",
 
-    "footer.promo.title": "კაზინოს ჩამოტვირთვა",
-    "footer.promo.subtitle": "ითამაშე ნებისმიერ დროს, ნებისმიერ ადგილას",
+    "footer.promo.title": "ჩამოტვირთვა",
+    "footer.promo.subtitle": "ითამაშე ნებისმიერ დროს",
     "footer.promo.install": "აპის დაყენება",
 
     "footer.info.age": "მხოლოდ 18+",
     "footer.info.license": "კაზინო სერტიფიცირებულია Anjouan Gaming Authority-ის მიერ",
 
-    "footer.socials.title": "ჩვენ სოციალურ მედიაში:"
+    "footer.socials.title": "ჩვენ სოციალურ მედიაში:",
+
+    "main.openGame": "თამაშის გახსნა"
   },
 
   ger: {
@@ -51,7 +55,9 @@ export const DICT: Record<Lang, Record<string, string>> = {
     "footer.info.age": "Nur 18+",
     "footer.info.license": "Das Casino ist von der Anjouan Gaming Authority zertifiziert",
 
-    "footer.socials.title": "Wir in den sozialen Medien:"
+    "footer.socials.title": "Wir in den sozialen Medien:",
+
+    "main.openGame": "Spiel öffnen"
   },
 
   it: {
@@ -68,7 +74,9 @@ export const DICT: Record<Lang, Record<string, string>> = {
     "footer.info.age": "Solo 18+",
     "footer.info.license": "Il casinò è certificato dalla Anjouan Gaming Authority",
 
-    "footer.socials.title": "Sui social media:"
+    "footer.socials.title": "Sui social media:",
+
+    "main.openGame": "Apri il gioco"
   },
 
   rus: {
@@ -85,7 +93,9 @@ export const DICT: Record<Lang, Record<string, string>> = {
     "footer.info.age": "Только 18+",
     "footer.info.license": "Казино сертифицировано Anjouan Gaming Authority",
 
-    "footer.socials.title": "Мы в социальных сетях:"
+    "footer.socials.title": "Мы в социальных сетях:",
+
+    "main.openGame": "Открыть игру"
   }
 };
 

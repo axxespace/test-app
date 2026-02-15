@@ -4,6 +4,7 @@ import type { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 import GameModal from "@/components/game/GameModal";
+import { useI18n } from "@/i18n/I18nProvider";
 
 import BackgroundImage from "@/assets/main/background.png";
 import BrandImage from "@/assets/footer/brand.png";
@@ -63,7 +64,6 @@ const MainSection = styled("main")(({ theme }) => ({
     inset: 0,
     background: "rgba(0, 0, 0, 0.45)"
   },
-
   "& > *": {
     position: "relative",
     zIndex: 1
@@ -74,19 +74,22 @@ const MainSection = styled("main")(({ theme }) => ({
 }));
 
 export default function Main() {
+  const { t, lang } = useI18n();
   const [openGame, setOpenGame] = React.useState(false);
+
   return (
     <MainSection>
       <StyledImage component="img" src={BrandImage} maxWidth={264} />
       <StyledImage component="img" src={SlotImage} sx={{ maxWidth: "326px", mt: "48px" }} />
+
       <StyledButton onClick={() => setOpenGame(true)} btnWidth={"358px"} disableElevation>
-        Open the game
+        {t("main.openGame")}
       </StyledButton>
 
       <GameModal
         open={openGame}
         onClose={() => setOpenGame(false)}
-        url="https://gateway.eva-digital-playground.com/v0/casino/games/launch?gameId=n2-novomatic-book-of-ra-deluxe&channel=desktop&partnerKey=0wl&lobbyUrl=https://chinchincasino.com&mode=demo&language=en"
+        url={`https://gateway.eva-digital-playground.com/v0/casino/games/launch?gameId=n2-novomatic-book-of-ra-deluxe&channel=desktop&partnerKey=0wl&lobbyUrl=https://chinchincasino.com&mode=demo&language=${lang}`}
         size={{ mode: "boxed", width: 900, height: 560 }}
       />
     </MainSection>
