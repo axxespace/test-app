@@ -3,8 +3,8 @@ import { Box, Container, Typography, Button, Select, MenuItem, IconButton } from
 import type { SelectChangeEvent } from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 
-import mascot from "@/assets/footer/mascot.png";
-import brand from "@/assets/footer/brand.png";
+import MascotImage from "@/assets/footer/mascot.png";
+import BrandImage from "@/assets/footer/brand.png";
 
 import DownloadIcon from "@/assets/footer/download.svg";
 import LicenseIcon from "@/assets/footer/license.svg";
@@ -369,7 +369,7 @@ export default function Footer() {
     <Root component="footer">
       <Inner maxWidth={false} disableGutters>
         <MascotWrap>
-          <Mascot src={mascot} alt="Mascot" />
+          <Mascot src={MascotImage} alt="Mascot" />
         </MascotWrap>
 
         <PromoCard>
@@ -390,7 +390,7 @@ export default function Footer() {
             />
           </SpotterBorderSvg>
 
-          <BrandLogo src={brand} alt="Brand" />
+          <BrandLogo src={BrandImage} alt="Brand" />
           <Title>Download Casino</Title>
           <Subtitle>Play Min anywhere, anytime</Subtitle>
 
