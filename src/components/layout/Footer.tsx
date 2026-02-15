@@ -19,6 +19,8 @@ import ItalyIcon from "@/assets/footer/countries/italy.svg";
 import RussiaIcon from "@/assets/footer/countries/russia.svg";
 import EnglandIcon from "@/assets/footer/countries/england.svg";
 
+import { useI18n, type Lang } from "@/i18n/I18nProvider";
+
 function fluidClampPx(minPx: number, maxPx: number, minVw = 1440, maxVw = 1920) {
   const slope = (maxPx - minPx) / (maxVw - minVw);
   const yIntercept = minPx - slope * minVw;
@@ -33,7 +35,7 @@ type InfoRowItem = {
   id: "age" | "license";
   icon: ImgSrc;
   alt: string;
-  text: string;
+  textKey: string;
   maxWidth?: number;
 };
 
@@ -44,20 +46,18 @@ type SocialItem = {
   href: string;
 };
 
-type Lang = "ge" | "en" | "ger" | "it" | "rus";
-
 const INFO: readonly InfoRowItem[] = [
   {
     id: "age",
     icon: AgeLimitIcon,
     alt: "18+ Age limit",
-    text: "Only 18+"
+    textKey: "footer.info.age"
   },
   {
     id: "license",
     icon: LicenseIcon,
     alt: "License",
-    text: "Casino is certified by the Anjouan Gaming Authority",
+    textKey: "footer.info.license",
     maxWidth: 287
   }
 ] as const;
@@ -75,14 +75,6 @@ const FLAGS: Record<Lang, ImgSrc> = {
   it: ItalyIcon,
   rus: RussiaIcon,
   ger: GermanyIcon
-};
-
-const LABELS: Record<Lang, string> = {
-  ge: "Georgian",
-  en: "English",
-  it: "Italian",
-  rus: "Russian",
-  ger: "German"
 };
 
 const LANGS: readonly Lang[] = ["en", "ge", "ger", "rus", "it"] as const;
@@ -355,8 +347,10 @@ const SocialIcon = styled("img")({
   height: 52
 });
 
+const langKey = (l: Lang) => `lang.${l}`;
+
 export default function Footer() {
-  const [lang, setLang] = React.useState<Lang>("en");
+  const { lang, setLang, t } = useI18n();
 
   const handleLangChange = (e: SelectChangeEvent<Lang>) => {
     setLang(e.target.value as Lang);
@@ -391,12 +385,12 @@ export default function Footer() {
           </SpotterBorderSvg>
 
           <BrandLogo src={BrandImage} alt="Brand" />
-          <Title>Download Casino</Title>
-          <Subtitle>Play Min anywhere, anytime</Subtitle>
+          <Title>{t("footer.promo.title")}</Title>
+          <Subtitle>{t("footer.promo.subtitle")}</Subtitle>
 
           <InstallButton disableElevation>
             <Box component="img" src={DownloadIcon} alt="" aria-hidden sx={{ width: 24 }} />
-            Install App
+            {t("footer.promo.install")}
           </InstallButton>
         </PromoCard>
 
@@ -405,7 +399,7 @@ export default function Footer() {
             <InfoRow key={row.id}>
               <InfoIcon src={row.icon} alt={row.alt} />
               <InfoText sx={row.maxWidth ? { maxWidth: row.maxWidth } : undefined}>
-                {row.text}
+                {t(row.textKey)}
               </InfoText>
             </InfoRow>
           ))}
@@ -419,21 +413,21 @@ export default function Footer() {
             renderValue={(value) => (
               <SelectValue>
                 <Flag src={FLAGS[value]} alt="" aria-hidden />
-                <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[value]}</Typography>
+                <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{t(langKey(value))}</Typography>
               </SelectValue>
             )}
           >
             {LANGS.map((l) => (
               <MenuItem key={l} value={l} sx={{ gap: 1 }}>
                 <FlagSmall src={FLAGS[l]} alt="" aria-hidden />
-                <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{LABELS[l]}</Typography>
+                <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{t(langKey(l))}</Typography>
               </MenuItem>
             ))}
           </LanguageSelect>
 
           <SocialRow>
             <Typography variant="caption" sx={{ fontSize: 16, color: "#BABABA", lineHeight: 1 }}>
-              Us on social media:
+              {t("footer.socials.title")}
             </Typography>
 
             <SocialButtons>
