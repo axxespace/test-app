@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import type {Lang} from "@/shared/i18n"
+import type { Lang } from "@/shared/i18n";
 
 export const theme = createTheme({
   breakpoints: {
@@ -61,6 +61,5 @@ export const theme = createTheme({
         it: "linear-gradient(to right, #E84393, #FD79A8)"
       } as Record<Lang, string>
     }
-
   }
 });

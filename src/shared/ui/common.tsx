@@ -2,7 +2,7 @@ import { Box, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import type { BoxProps } from "@mui/material/Box";
 import type { ButtonProps } from "@mui/material/Button";
-import type {Lang} from "@/shared/i18n"
+import type { Lang } from "@/shared/i18n";
 
 type AppImageProps = BoxProps<"img"> & {
   maxWidth?: number | string;

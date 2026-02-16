@@ -2,7 +2,7 @@ import * as React from "react";
 import { Dialog, Box, IconButton, useMediaQuery } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { Frame, getPaperSx } from "./styles";
+import { Frame, getPaperSx } from "../styles";
 import LoaderOverlay from "./LoaderOverlay";
 
 export type GameModalSize =
@@ -96,7 +96,7 @@ export default function GameModal({
             position: "absolute",
             top: 14,
             right: 14,
-            zIndex: 100,
+            zIndex: 3,
             color: "common.white",
             backgroundColor: "custom.modal.closeBg",
             "&:hover": { backgroundColor: "custom.modal.closeHoverBg" }

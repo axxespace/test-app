@@ -1,12 +1,13 @@
 import { styled } from "@mui/material/styles";
 import type { SxProps, Theme } from "@mui/material/styles";
-import type { GameModalSize } from "./GameModal";
+import type { GameModalSize } from "./components/GameModal";
 
 export const Frame = styled("iframe")(({ theme }) => ({
   width: "100%",
   height: "100%",
   display: "block",
-  background: theme.custom.modal.bg
+  background: theme.custom.modal.bg,
+  borderWidth: 0
 }));
 
 export function getPaperSx({

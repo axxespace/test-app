@@ -1,67 +1,143 @@
-# Geo i18n Game – Frontend Test Task
+# 🎰 Geo i18n Game -- Frontend Test Application
 
-Production-oriented React application built with a fully custom Webpack setup.
+A modern frontend test application built with **React 18, TypeScript,
+Webpack 5, MUI v7, and Styled Components**.
 
----
-
-## 🚀 Project Summary
-
-This project was built as a technical assessment for a Middle Frontend Developer position.
-
-The goal was not only to deliver a working UI, but to demonstrate:
-
-- Strong understanding of build tooling (Webpack + Babel)
-- Clean architectural decisions
-- Performance awareness
-- Manual internationalization without external routing or i18n libraries
-- Scalable component structure
-- Production-ready code standards
-
-No scaffolding tools (CRA, Vite) were used intentionally.
+This project demonstrates mid-level frontend engineering skills
+including custom tooling, architecture decisions, performance
+optimization, and a fully custom internationalization system without
+external routing libraries.
 
 ---
 
-## 🧱 Tech Stack
+## 🚀 Overview
 
-### Core
+This is a production-ready Single Page Application with:
+
+- Custom Webpack configuration (no CRA / Vite)
+- Fully custom i18n implementation
+- Language-based URL switching (`/en`, `/ge`, `/rus`, etc.\`)
+- Responsive layout (desktop & mobile)
+- Clean modular architecture
+- Strict TypeScript setup
+- ESLint + Prettier configuration
+- Optimized production build
+
+---
+
+## 🧠 Tech Stack
 
 - React 18
-- TypeScript 5 (strict mode)
-- Webpack 5 (custom configuration)
+- TypeScript
+- Webpack 5
+- Material UI v7
+- Styled Components
 - Babel
-
-### UI & Styling
-
-- MUI v7
-- styled-components (via `@mui/styled-engine-sc`)
-- Responsive layout system
-
-### Quality & Tooling
-
-- ESLint (React + TypeScript rules)
+- ESLint
 - Prettier
-- Type-safe configuration
-- Clean build output with content hashing
 
 ---
 
-## 🏗 Architectural Highlights
+## 🌍 Internationalization
 
-### 1️⃣ Custom Webpack Configuration
+The application includes a custom-built i18n system:
 
-- Manual entry/output configuration
-- Content-hashed production bundles
-- Clean build directory
-- Proper publicPath handling
-- Babel + TypeScript integration
-- Styled-components optimization plugin
+- No external libraries (no react-router, no i18next)
+- URL-based language detection
+- Dynamic path rewriting on language change
+- LocalStorage persistence
+- `<html lang="">` synchronization
+- Dictionary-based translations
 
-Demonstrates understanding beyond framework defaults.
+Supported routes example:
+
+    /en
+    /ge
+    /rus
+    /ger
+    /it
 
 ---
 
-### 2️⃣ Manual Internationalization (No Libraries)
+## 📁 Project Structure
 
-- No `react-router`
-- No `react-i18next`
-- No external routing solution
+    src/
+     ├── app/
+     ├── assets/
+     ├── features/
+     │    ├── main/
+     │    └── game/
+     ├── layout/
+     │    └── footer/
+     ├── shared/
+     │    ├── ui/
+     │    └── i18n/
+     ├── theme/
+     ├── types/
+
+The structure is modular and scalable for larger applications.
+
+---
+
+## 🛠 Getting Started
+
+### Install dependencies
+
+npm install
+
+### Run development server
+
+`npm run dev`
+
+App runs on: http://localhost:3000
+
+### Build for production
+
+`npm run build`
+
+Production files will be generated in: /dist
+
+### Type checking
+
+`npm run typecheck
+`
+### Lint project
+
+`npm run lint`
+
+### use prettier
+
+`npm run format`
+
+---
+
+## 🏗 Production Notes
+
+- Webpack configured manually
+- Content-hashed bundles
+- Optimized asset loading
+- SPA routing support
+- Ready for static deployment (e.g. Vercel)
+
+---
+
+## 🎯 Purpose
+
+This project was created as a technical assessment for a Middle Frontend
+Developer position.
+
+It demonstrates:
+
+- Strong understanding of bundlers and build systems
+- Clean scalable architecture
+- Performance-aware development
+- Custom problem-solving without heavy libraries
+- Solid TypeScript usage
+
+---
+
+## 👨‍💻 Author
+
+Nika Beridze\
+Frontend Developer\
+Focused on performance, architecture, and clean scalable solutions.
