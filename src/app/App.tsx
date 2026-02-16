@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "@/components/layout/footer/Footer";
 import { Box } from "@mui/material";
-import Main from "@/components/layout/Main";
+import {Main} from "@/features/main";
+import { Footer } from "@/features/footer";
 
 export default function App() {
   return (

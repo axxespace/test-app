@@ -3,7 +3,7 @@ import { StyledEngineProvider, ThemeProvider as MuiThemeProvider } from "@mui/ma
 import { ThemeProvider as SCThemeProvider } from "styled-components";
 
 import { theme } from "@/theme";
-import { GlobalThemeStyles } from "@/theme/globalStyles";
+import { GlobalThemeStyles } from "@/app/styles/globalStyles";
 
 export function AppProviders({ children }: PropsWithChildren) {
   return (

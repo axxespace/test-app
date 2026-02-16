@@ -90,9 +90,9 @@ export default function GameModal({
   };
 
   const paperSx = shouldFullScreen
-    ? { bgcolor: "custom.modal.bg" }
+    ? { bgColor: "custom.modal.bg" }
     : {
-        bgcolor: "custom.modal.bg",
+        bgColor: "custom.modal.bg",
         width: size.mode === "boxed" ? (size.width ?? 980) : 980,
         height: size.mode === "boxed" ? (size.height ?? 620) : 620,
         maxWidth: "96vw",

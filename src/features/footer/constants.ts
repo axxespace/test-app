@@ -1,18 +1,18 @@
-import type { Lang } from "@/i18n/I18nProvider";
+import type { Lang } from "@/shared/i18n/I18nProvider";
 
-import LicenseIcon from "@/assets/footer/license.svg";
-import AgeLimitIcon from "@/assets/footer/age-limit.svg";
+import LicenseIcon from "@/assets/icons/footer/license.svg";
+import AgeLimitIcon from "@/assets/icons/footer/age-limit.svg";
 
-import EmailIcon from "@/assets/footer/socials/email.svg";
-import TelegramIcon from "@/assets/footer/socials/telegram.svg";
-import XIcon from "@/assets/footer/socials/x.svg";
-import InstagramIcon from "@/assets/footer/socials/instagram.svg";
+import EmailIcon from "@/assets/icons/socials/email.svg";
+import TelegramIcon from "@/assets/icons/socials/telegram.svg";
+import XIcon from "@/assets/icons/socials/x.svg";
+import InstagramIcon from "@/assets/icons/socials/instagram.svg";
 
-import GermanyIcon from "@/assets/footer/countries/germany.svg";
-import GeorgiaIcon from "@/assets/footer/countries/goergia.svg";
-import ItalyIcon from "@/assets/footer/countries/italy.svg";
-import RussiaIcon from "@/assets/footer/countries/russia.svg";
-import EnglandIcon from "@/assets/footer/countries/england.svg";
+import GermanyIcon from "@/assets/icons/countries/germany.svg";
+import GeorgiaIcon from "@/assets/icons/countries/goergia.svg";
+import ItalyIcon from "@/assets/icons/countries/italy.svg";
+import RussiaIcon from "@/assets/icons/countries/russia.svg";
+import EnglandIcon from "@/assets/icons/countries/england.svg";
 
 type ImgSrc = string;
 

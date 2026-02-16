@@ -1,18 +1,18 @@
 import * as React from "react";
 import { Box } from "@mui/material";
 
-import { AppImage, GradientButton } from "@/components/ui/common";
+import { AppImage, GradientButton } from "@/shared/ui/common";
 
-import BrandImage from "@/assets/footer/brand.png";
-import DownloadIcon from "@/assets/footer/download.svg";
+import BrandImage from "@/assets/images/footer/brand.png";
+import DownloadIcon from "@/assets/icons/footer/download.svg";
 
-import { useI18n } from "@/i18n/I18nProvider";
+import { useI18n } from "@/shared/i18n/I18nProvider";
 import {
   PromoCardWrap,
   SpotterBorderSvg,
   Subtitle,
   Title
-} from "@/components/layout/footer/styles";
+} from "@/features/footer/styles";
 
 export default function PromoCard() {
   const { t } = useI18n();

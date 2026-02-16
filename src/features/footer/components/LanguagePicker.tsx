@@ -2,9 +2,9 @@ import * as React from "react";
 import { MenuItem, Typography } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material/Select";
 
-import { FLAGS, LANGS, langKey } from "@/components/layout/footer/constants";
-import { Flag, FlagSmall, LanguageSelect, SelectValue } from "@/components/layout/footer/styles";
-import { useI18n, type Lang } from "@/i18n/I18nProvider";
+import { FLAGS, LANGS, langKey } from "@/features/footer/constants";
+import { Flag, FlagSmall, LanguageSelect, SelectValue } from "@/features/footer/styles";
+import { useI18n, type Lang } from "@/shared/i18n/I18nProvider";
 
 const SelectChevron = () => (
   <svg width="35" height="35" viewBox="0 0 24 24" aria-hidden focusable="false">
