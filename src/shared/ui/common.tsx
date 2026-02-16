@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 
 type AppImageProps = BoxProps<"img"> & {
   maxWidth?: number | string;
+  fetchpriority?: "high" | "low" | "auto";
 };
 
 export const AppImage = styled(Box, {

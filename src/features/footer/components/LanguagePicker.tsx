@@ -30,6 +30,7 @@ export default function LanguagePicker() {
       value={lang}
       onChange={handleLangChange}
       IconComponent={SelectChevron}
+      inputProps={{ "aria-label": "Language" }}
       renderValue={(value) => (
         <SelectValue>
           <Flag src={FLAGS[value]} alt="flag icon" aria-hidden />

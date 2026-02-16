@@ -20,6 +20,7 @@ export default function Main() {
     <MainSection>
       <AppImage component="img" alt="logo image" src={BrandImage} maxWidth={264} />
       <AppImage
+        fetchpriority="high"
         component="img"
         alt="slot image"
         src={SlotImage}
