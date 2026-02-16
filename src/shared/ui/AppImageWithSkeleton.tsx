@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useRef, useEffect, useState } from "react";
 import { Box, Skeleton } from "@mui/material";
 import type { BoxProps } from "@mui/material/Box";
 
@@ -21,14 +21,14 @@ export function AppImageWithSkeleton({
   skeletonFadeMs = 400,
   ...props
 }: Props) {
-  const imgRef = React.useRef<HTMLImageElement | null>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
-  const [loaded, setLoaded] = React.useState(false);
-  const [errored, setErrored] = React.useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [errored, setErrored] = useState(false);
 
-  const [skeletonMounted, setSkeletonMounted] = React.useState(true);
+  const [skeletonMounted, setSkeletonMounted] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoaded(false);
     setErrored(false);
     setSkeletonMounted(true);
@@ -39,7 +39,7 @@ export function AppImageWithSkeleton({
     }
   }, [src]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!loaded) return;
 
     const t = window.setTimeout(() => {

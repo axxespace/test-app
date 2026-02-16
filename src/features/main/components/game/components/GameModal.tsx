@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState, useRef } from "react";
 import { Dialog, Box, IconButton, useMediaQuery } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -29,13 +29,13 @@ export default function GameModal({
   const isMobile = useMediaQuery("(max-width:900px)");
   const shouldFullScreen = size.mode === "fullscreen" || isMobile;
 
-  const [loading, setLoading] = React.useState(true);
-  const [showRetry, setShowRetry] = React.useState(false);
-  const [iframeKey, setIframeKey] = React.useState(0);
+  const [loading, setLoading] = useState(true);
+  const [showRetry, setShowRetry] = useState(false);
+  const [iframeKey, setIframeKey] = useState(0);
 
-  const timeoutRef = React.useRef<number | null>(null);
+  const timeoutRef = useRef<number | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!open) return;
 
     setLoading(true);
@@ -43,7 +43,7 @@ export default function GameModal({
     setIframeKey((k) => k + 1);
   }, [open, url]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (open) return;
 
     setLoading(true);
@@ -55,7 +55,7 @@ export default function GameModal({
     }
   }, [open]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!open) return;
 
     if (timeoutRef.current) window.clearTimeout(timeoutRef.current);

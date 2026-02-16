@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useMemo } from "react";
 
 import { GradientButton } from "@/shared/ui/common";
 import GameModal from "@/features/main/components/game/components/GameModal";
@@ -13,9 +13,9 @@ import { AppImageWithSkeleton } from "@/shared/ui/AppImageWithSkeleton";
 
 export default function Main() {
   const { t, lang } = useI18n();
-  const [openGame, setOpenGame] = React.useState(false);
+  const [openGame, setOpenGame] = useState(false);
 
-  const gameUrl = React.useMemo(() => buildGameUrl(lang), [lang]);
+  const gameUrl = useMemo(() => buildGameUrl(lang), [lang]);
 
   return (
     <MainSection>
