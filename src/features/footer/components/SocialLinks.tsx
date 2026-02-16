@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 
 import { SOCIALS } from "@/features/footer/constants";
 import { SocialButton, SocialButtons, SocialIcon, SocialRow } from "@/features/footer/styles";
-import { useI18n } from "@/shared/i18n/I18nProvider";
+import { useI18n } from "@/shared/i18n";
 
 export default function SocialLinks() {
   const { t } = useI18n();

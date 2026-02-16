@@ -1,14 +1,8 @@
 import * as React from "react";
 import { DICT, type Lang } from "./dict";
 import { format, type Params } from "./format";
-
-type I18nContextValue = {
-  lang: Lang;
-  setLang: (l: Lang) => void;
-  t: (key: string, params?: Params) => string;
-};
-
-const I18nContext = React.createContext<I18nContextValue | null>(null);
+import { I18nContext } from "./context";
+import { buildPathWithLang, getLangFromPathname, isLang } from "./url";
 
 export function I18nProvider({
   children,
@@ -20,15 +14,46 @@ export function I18nProvider({
   storageKey?: string;
 }) {
   const [lang, setLangState] = React.useState<Lang>(() => {
+    const fromPath = getLangFromPathname(window.location.pathname);
+    if (fromPath) return fromPath;
+
     const saved = localStorage.getItem(storageKey) as Lang | null;
-    return saved ?? defaultLang;
+    if (saved && isLang(saved)) return saved;
+
+    return defaultLang;
   });
+
+  React.useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  React.useEffect(() => {
+    const current = getLangFromPathname(window.location.pathname);
+    if (!current) {
+      const nextUrl = buildPathWithLang(
+        lang,
+        window.location.pathname,
+        window.location.search,
+        window.location.hash
+      );
+      window.history.replaceState(null, "", nextUrl);
+    }
+  }, [lang]);
 
   const setLang = React.useCallback(
     (l: Lang) => {
       setLangState(l);
       localStorage.setItem(storageKey, l);
-      document.documentElement.lang = l;
+
+      const nextUrl = buildPathWithLang(
+        l,
+        window.location.pathname,
+        window.location.search,
+        window.location.hash
+      );
+
+      window.history.pushState(null, "", nextUrl);
+      window.dispatchEvent(new Event("popstate"));
     },
     [storageKey]
   );
@@ -44,10 +69,4 @@ export function I18nProvider({
   const value = React.useMemo(() => ({ lang, setLang, t }), [lang, setLang, t]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
-}
-
-export function useI18n() {
-  const ctx = React.useContext(I18nContext);
-  if (!ctx) throw new Error("useI18n must be used inside <I18nProvider>");
-  return ctx;
 }
