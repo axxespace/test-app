@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { GradientButton } from "@/shared/ui/common";
-import GameModal from "@/features/main/components/GameModal";
+import GameModal from "@/features/main/components/game/GameModal";
 import { useI18n } from "@/shared/i18n";
 
 import BrandImage from "@/assets/images/logo.webp";

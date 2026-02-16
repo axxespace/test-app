@@ -5,7 +5,6 @@ export function buildGameUrl(lang: string) {
   const lobbyUrl = process.env.APP_LOBBY_URL;
 
   if (!base || !gameId || !partnerKey || !lobbyUrl) {
-    // fail fast so you don't silently generate "undefined" URLs
     throw new Error("Missing required APP_* env variables for game URL");
   }
 
@@ -13,7 +12,7 @@ export function buildGameUrl(lang: string) {
     gameId,
     channel: "desktop",
     partnerKey,
-    lobbyUrl, // URLSearchParams will encode it
+    lobbyUrl,
     mode: "demo",
     language: lang
   });

@@ -1,29 +1,15 @@
 import * as React from "react";
-import {
-  Dialog,
-  Box,
-  IconButton,
-  CircularProgress,
-  useMediaQuery,
-  Typography,
-  Button
-} from "@mui/material";
+import { Dialog, Box, IconButton, useMediaQuery } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { styled } from "@mui/material/styles";
 
-const Frame = styled("iframe")(({ theme }) => ({
-  width: "100%",
-  height: "100%",
-  border: 0,
-  display: "block",
-  background: theme.custom.modal.bg
-}));
+import { Frame, getPaperSx } from "./styles";
+import LoaderOverlay from "./LoaderOverlay";
 
-type GameModalSize =
+export type GameModalSize =
   | { mode: "fullscreen" }
   | { mode: "boxed"; width?: number | string; height?: number | string };
 
-type GameModalProps = {
+export type GameModalProps = {
   open: boolean;
   onClose: () => void;
   url: string;
@@ -89,17 +75,7 @@ export default function GameModal({
     setIframeKey((k) => k + 1);
   };
 
-  const paperSx = shouldFullScreen
-    ? { bgColor: "custom.modal.bg" }
-    : {
-        bgColor: "custom.modal.bg",
-        width: size.mode === "boxed" ? (size.width ?? 980) : 980,
-        height: size.mode === "boxed" ? (size.height ?? 620) : 620,
-        maxWidth: "96vw",
-        maxHeight: "92vh",
-        borderRadius: 3,
-        overflow: "hidden"
-      };
+  const paperSx = getPaperSx({ shouldFullScreen, size });
 
   return (
     <Dialog
@@ -149,33 +125,7 @@ export default function GameModal({
           />
         )}
 
-        {loading && (
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 2,
-              display: "grid",
-              placeItems: "center",
-              backgroundColor: "custom.modal.overlayBg",
-              backdropFilter: "blur(2px)"
-            }}
-          >
-            <Box sx={{ textAlign: "center", px: 3 }}>
-              <CircularProgress />
-              {showRetry && (
-                <>
-                  <Typography sx={{ color: "common.white", fontWeight: 700, mt: 2 }}>
-                    Still loading…
-                  </Typography>
-                  <Button variant="contained" sx={{ mt: 2 }} onClick={handleRetry}>
-                    Retry
-                  </Button>
-                </>
-              )}
-            </Box>
-          </Box>
-        )}
+        <LoaderOverlay loading={loading} showRetry={showRetry} onRetry={handleRetry} />
       </Box>
     </Dialog>
   );
