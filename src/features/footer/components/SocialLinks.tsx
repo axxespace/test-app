@@ -35,7 +35,7 @@ export default function SocialLinks() {
             rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
             aria-label={s.label}
           >
-            <SocialIcon src={s.icon} alt="" aria-hidden />
+            <SocialIcon src={s.icon} alt="social icon" aria-hidden />
           </SocialButton>
         ))}
       </SocialButtons>

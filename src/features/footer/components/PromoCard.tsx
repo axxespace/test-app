@@ -45,7 +45,7 @@ export default function PromoCard() {
       <Subtitle>{t("footer.promo.subtitle")}</Subtitle>
 
       <GradientButton sx={{ margin: "18px auto" }} disableElevation>
-        <Box component="img" src={DownloadIcon} alt="" aria-hidden sx={{ width: 24 }} />
+        <Box component="img" src={DownloadIcon} alt="download icon" aria-hidden sx={{ width: 24 }} />
         {t("footer.promo.install")}
       </GradientButton>
     </PromoCardWrap>

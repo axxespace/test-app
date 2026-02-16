@@ -32,7 +32,7 @@ export default function LanguagePicker() {
       IconComponent={SelectChevron}
       renderValue={(value) => (
         <SelectValue>
-          <Flag src={FLAGS[value]} alt="" aria-hidden />
+          <Flag src={FLAGS[value]} alt="flag icon" aria-hidden />
           <Typography
             sx={(theme) => ({
               color: theme.custom.footer.icon
@@ -45,7 +45,7 @@ export default function LanguagePicker() {
     >
       {LANGS.map((l) => (
         <MenuItem key={l} value={l} sx={{ gap: 1 }}>
-          <FlagSmall src={FLAGS[l]} alt="" aria-hidden />
+          <FlagSmall src={FLAGS[l]} alt="small flag icon" aria-hidden />
           <Typography
             sx={(theme) => ({
               color: theme.custom.footer.icon

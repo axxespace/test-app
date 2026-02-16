@@ -18,8 +18,8 @@ export default function Main() {
 
   return (
       <MainSection>
-        <AppImage component="img" src={BrandImage} maxWidth={264} />
-        <AppImage component="img" src={SlotImage} sx={{ maxWidth: "326px", mt: "48px" }} />
+        <AppImage component="img" alt="logo image" src={BrandImage} maxWidth={264} />
+        <AppImage component="img" alt="slot image" src={SlotImage} sx={{ maxWidth: "326px", mt: "48px" }} />
 
         <GradientButton
             onClick={() => setOpenGame(true)}
