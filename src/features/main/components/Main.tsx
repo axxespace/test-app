@@ -20,16 +20,20 @@ export default function Main() {
   return (
     <MainSection>
       <AppImageWithSkeleton
+        width={264}
+        height={110}
         component="img"
         alt="logo image"
         src={BrandImage}
-        sx={{ maxWidth: "264px", height: "110px", mt: "48px", mb: "32px" }}
+        sx={{ mb: "32px" }}
       />
       <AppImageWithSkeleton
+        width={326}
+        height={200}
         component="img"
         alt="slot image"
         src={SlotImage}
-        sx={{ maxWidth: "326px", height: "200px", mb: "32px" }}
+        sx={{ mb: "32px" }}
       />
 
       <GradientButton
