@@ -1,11 +1,11 @@
-export type Lang = "en" | "ge" | "ger" | "rus" | "it";
+export type Lang = "en" | "ka" | "de" | "ru" | "it";
 
 export const DICT: Record<Lang, Record<string, string>> = {
   en: {
     "lang.en": "English",
-    "lang.ge": "Georgian",
-    "lang.ger": "German",
-    "lang.rus": "Russian",
+    "lang.ka": "Georgian",
+    "lang.de": "German",
+    "lang.ru": "Russian",
     "lang.it": "Italian",
 
     "footer.promo.title": "Download Casino",
@@ -20,11 +20,11 @@ export const DICT: Record<Lang, Record<string, string>> = {
     "main.openGame": "Open the game"
   },
 
-  ge: {
+  ka: {
     "lang.en": "ინგლისური",
-    "lang.ge": "ქართული",
-    "lang.ger": "გერმანული",
-    "lang.rus": "რუსული",
+    "lang.ka": "ქართული",
+    "lang.de": "გერმანული",
+    "lang.ru": "რუსული",
     "lang.it": "იტალიური",
 
     "footer.promo.title": "ჩამოტვირთვა",
@@ -39,11 +39,11 @@ export const DICT: Record<Lang, Record<string, string>> = {
     "main.openGame": "თამაშის გახსნა"
   },
 
-  ger: {
+  de: {
     "lang.en": "Englisch",
-    "lang.ge": "Georgisch",
-    "lang.ger": "Deutsch",
-    "lang.rus": "Russisch",
+    "lang.ka": "Georgisch",
+    "lang.de": "Deutsch",
+    "lang.ru": "Russisch",
     "lang.it": "Italienisch",
 
     "footer.promo.title": "Casino herunterladen",
@@ -60,9 +60,9 @@ export const DICT: Record<Lang, Record<string, string>> = {
 
   it: {
     "lang.en": "Inglese",
-    "lang.ge": "Georgiano",
-    "lang.ger": "Tedesco",
-    "lang.rus": "Russo",
+    "lang.ka": "Georgiano",
+    "lang.de": "Tedesco",
+    "lang.ru": "Russo",
     "lang.it": "Italiano",
 
     "footer.promo.title": "Scarica Casino",
@@ -77,11 +77,11 @@ export const DICT: Record<Lang, Record<string, string>> = {
     "main.openGame": "Apri il gioco"
   },
 
-  rus: {
+  ru: {
     "lang.en": "Английский",
-    "lang.ge": "Грузинский",
-    "lang.ger": "Немецкий",
-    "lang.rus": "Русский",
+    "lang.ka": "Грузинский",
+    "lang.de": "Немецкий",
+    "lang.ru": "Русский",
     "lang.it": "Итальянский",
 
     "footer.promo.title": "Скачать Casino",

@@ -50,13 +50,13 @@ export const SOCIALS: readonly SocialItem[] = [
 ] as const;
 
 export const FLAGS: Record<Lang, ImgSrc> = {
-  ge: GeorgiaIcon,
+  ka: GeorgiaIcon,
   en: EnglandIcon,
   it: ItalyIcon,
-  rus: RussiaIcon,
-  ger: GermanyIcon
+  ru: RussiaIcon,
+  de: GermanyIcon
 };
 
-export const LANGS: readonly Lang[] = ["en", "ge", "ger", "rus", "it"] as const;
+export const LANGS: readonly Lang[] = ["en", "ka", "de", "ru", "it"] as const;
 
 export const langKey = (l: Lang) => `lang.${l}`;

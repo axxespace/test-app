@@ -16,7 +16,7 @@ This is a production-ready Single Page Application with:
 
 - Custom Webpack configuration (no CRA / Vite)
 - Fully custom i18n implementation
-- Language-based URL switching (`/en`, `/ge`, `/rus`, etc.\`)
+- Language-based URL switching (`/en`, `/ka`, `/ru`, etc.\`)
 - Responsive layout (desktop & mobile)
 - Clean modular architecture
 - Strict TypeScript setup
@@ -52,9 +52,9 @@ The application includes a custom-built i18n system:
 Supported routes example:
 
     /en
-    /ge
-    /rus
-    /ger
+    /ka
+    /ru
+    /de
     /it
 
 ---
@@ -101,6 +101,7 @@ Production files will be generated in: /dist
 
 `npm run typecheck
 `
+
 ### Lint project
 
 `npm run lint`

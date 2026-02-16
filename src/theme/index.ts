@@ -55,9 +55,9 @@ export const theme = createTheme({
     language: {
       buttonBg: {
         en: "linear-gradient(to right, #FF8D6B, #FFBA47)",
-        rus: "linear-gradient(to right, #4A90E2, #357ABD)",
-        ge: "linear-gradient(to right, #00B894, #019875)",
-        ger: "linear-gradient(to right, #6C5CE7, #A29BFE)",
+        ru: "linear-gradient(to right, #4A90E2, #357ABD)",
+        ka: "linear-gradient(to right, #00B894, #019875)",
+        de: "linear-gradient(to right, #6C5CE7, #A29BFE)",
         it: "linear-gradient(to right, #E84393, #FD79A8)"
       } as Record<Lang, string>
     }
