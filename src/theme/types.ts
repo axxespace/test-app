@@ -1,4 +1,5 @@
 import "@mui/material/styles";
+import type { Lang } from "@/shared/i18n";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -24,6 +25,9 @@ declare module "@mui/material/styles" {
         closeBg: string;
         closeHoverBg: string;
         overlayBg: string;
+      };
+      language: {
+        buttonBg: Record<Lang, string>;
       };
     };
   }

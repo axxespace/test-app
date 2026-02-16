@@ -37,6 +37,7 @@ export default function Main() {
       />
 
       <GradientButton
+          lang={lang}
         onClick={() => setOpenGame(true)}
         btnWidth="358px"
         sx={{ textTransform: "uppercase" }}

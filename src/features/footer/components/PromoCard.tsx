@@ -10,7 +10,7 @@ import { useI18n } from "@/shared/i18n";
 import { PromoCardWrap, SpotterBorderSvg, Subtitle, Title } from "@/features/footer/styles";
 
 export default function PromoCard() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   const strokeWidth = 0.8;
   const r = 16;
@@ -39,7 +39,7 @@ export default function PromoCard() {
       <Title>{t("footer.promo.title")}</Title>
       <Subtitle>{t("footer.promo.subtitle")}</Subtitle>
 
-      <GradientButton sx={{ margin: "18px auto" }} disableElevation>
+      <GradientButton lang={lang} sx={{ margin: "18px auto" }} disableElevation>
         <Box
           component="img"
           src={DownloadIcon}

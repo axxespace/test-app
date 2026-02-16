@@ -57,7 +57,7 @@ export const PromoCardWrap = styled(Box)(({ theme }) => ({
   boxSizing: "border-box",
   minWidth: 0,
   overflow: "hidden",
-  height: 294,
+  minHeight: 294,
   borderRadius: 16,
   padding: theme.spacing(3),
   border: "1px solid transparent",

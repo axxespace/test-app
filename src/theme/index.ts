@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import type {Lang} from "@/shared/i18n"
 
 export const theme = createTheme({
   breakpoints: {
@@ -50,6 +51,16 @@ export const theme = createTheme({
       closeBg: "rgba(0,0,0,0.35)",
       closeHoverBg: "rgba(0,0,0,0.50)",
       overlayBg: "rgba(0,0,0,0.55)"
+    },
+    language: {
+      buttonBg: {
+        en: "linear-gradient(to right, #FF8D6B, #FFBA47)",
+        rus: "linear-gradient(to right, #4A90E2, #357ABD)",
+        ge: "linear-gradient(to right, #00B894, #019875)",
+        ger: "linear-gradient(to right, #6C5CE7, #A29BFE)",
+        it: "linear-gradient(to right, #E84393, #FD79A8)"
+      } as Record<Lang, string>
     }
+
   }
 });
