@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 
 import { AppImage, GradientButton } from "@/shared/ui/common";
 
-import BrandImage from "@/assets/images/footer/brand.png";
+import BrandImage from "@/assets/images/footer/brand.webp";
 import DownloadIcon from "@/assets/icons/footer/download.svg";
 
 import { useI18n } from "@/shared/i18n/I18nProvider";
@@ -34,7 +34,7 @@ export default function PromoCard() {
         />
       </SpotterBorderSvg>
 
-      <AppImage component="img" src={BrandImage} maxWidth={176} alt="Brand" />
+      <AppImage loading="lazy" component="img" src={BrandImage} maxWidth={176} alt="Brand" />
 
       <Title>{t("footer.promo.title")}</Title>
       <Subtitle>{t("footer.promo.subtitle")}</Subtitle>

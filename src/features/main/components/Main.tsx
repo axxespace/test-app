@@ -4,8 +4,8 @@ import { AppImage, GradientButton } from "@/shared/ui/common";
 import GameModal from "@/features/main/components/GameModal";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
-import BrandImage from "@/assets/images/footer/brand.png";
-import SlotImage from "@/assets/images/main/slot.png";
+import BrandImage from "@/assets/images/footer/brand.webp";
+import SlotImage from "@/assets/images/main/slot.webp";
 
 import { MainSection } from "./MainSection";
 import { buildGameUrl } from "../buildGameUrl";

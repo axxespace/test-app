@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import BackgroundImage from "@/assets/images/main/background.png";
+import BackgroundImage from "@/assets/images/main/background.webp";
 
 export const MainSection = styled("main")(({ theme }) => ({
   height: 910,
