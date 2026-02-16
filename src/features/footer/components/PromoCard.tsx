@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 
 import { AppImage, GradientButton } from "@/shared/ui/common";
 
-import BrandImage from "@/assets/images/footer/brand.webp";
+import BrandImage from "@/assets/images/logo.webp";
 import DownloadIcon from "@/assets/icons/footer/download.svg";
 
 import { useI18n } from "@/shared/i18n/I18nProvider";

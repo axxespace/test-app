@@ -4,11 +4,12 @@ import { AppImage, GradientButton } from "@/shared/ui/common";
 import GameModal from "@/features/main/components/GameModal";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
-import BrandImage from "@/assets/images/footer/brand.webp";
+import BrandImage from "@/assets/images/logo.webp";
 import SlotImage from "@/assets/images/main/slot.webp";
 
 import { MainSection } from "./MainSection";
 import { buildGameUrl } from "../buildGameUrl";
+import { AppImageWithSkeleton } from "@/shared/ui/AppImageWithSkeleton";
 
 export default function Main() {
   const { t, lang } = useI18n();
@@ -18,13 +19,17 @@ export default function Main() {
 
   return (
     <MainSection>
-      <AppImage component="img" alt="logo image" src={BrandImage} maxWidth={264} />
-      <AppImage
-        fetchpriority="high"
+      <AppImageWithSkeleton
+        component="img"
+        alt="logo image"
+        src={BrandImage}
+        sx={{ maxWidth: "264px", height: "110px", mt: "48px", mb: "32px" }}
+      />
+      <AppImageWithSkeleton
         component="img"
         alt="slot image"
         src={SlotImage}
-        sx={{ maxWidth: "326px", mt: "48px" }}
+        sx={{ maxWidth: "326px", height: "200px", mb: "32px" }}
       />
 
       <GradientButton

@@ -13,10 +13,10 @@ export const AppImage = styled(Box, {
 })<AppImageProps>(({ maxWidth }) => ({
   height: "auto",
   width: "100%",
-  maxWidth,
   display: "block",
   marginLeft: "auto",
-  marginRight: "auto"
+  marginRight: "auto",
+  maxWidth
 }));
 
 type GradientButtonProps = ButtonProps & {
