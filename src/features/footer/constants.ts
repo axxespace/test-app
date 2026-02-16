@@ -1,4 +1,4 @@
-import type { Lang } from "@/shared/i18n/I18nProvider";
+import type { Lang } from "@/shared/i18n/dict";
 
 import LicenseIcon from "@/assets/icons/footer/license.svg";
 import AgeLimitIcon from "@/assets/icons/footer/age-limit.svg";

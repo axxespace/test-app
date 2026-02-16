@@ -4,7 +4,8 @@ import type { SelectChangeEvent } from "@mui/material/Select";
 
 import { FLAGS, LANGS, langKey } from "@/features/footer/constants";
 import { Flag, FlagSmall, LanguageSelect, SelectValue } from "@/features/footer/styles";
-import { useI18n, type Lang } from "@/shared/i18n/I18nProvider";
+import { type Lang } from "@/shared/i18n/dict";
+import { useI18n } from "@/shared/i18n";
 
 const SelectChevron = () => (
   <svg width="35" height="35" viewBox="0 0 24 24" aria-hidden focusable="false">

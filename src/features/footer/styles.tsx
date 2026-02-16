@@ -1,6 +1,6 @@
 import { Box, Container, Typography, Select, IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import type { Lang } from "@/shared/i18n/I18nProvider";
+import { type Lang } from "@/shared/i18n/dict";
 
 export function fluidClampPx(minPx: number, maxPx: number, minVw = 1440, maxVw = 1920) {
   const slope = (maxPx - minPx) / (maxVw - minVw);

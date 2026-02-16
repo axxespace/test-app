@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { AppImage, GradientButton } from "@/shared/ui/common";
+import { GradientButton } from "@/shared/ui/common";
 import GameModal from "@/features/main/components/GameModal";
-import { useI18n } from "@/shared/i18n/I18nProvider";
+import { useI18n } from "@/shared/i18n";
 
 import BrandImage from "@/assets/images/logo.webp";
 import SlotImage from "@/assets/images/main/slot.webp";
