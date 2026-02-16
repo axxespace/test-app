@@ -40,6 +40,17 @@ export default function Main() {
   const { t, lang } = useI18n();
   const [openGame, setOpenGame] = React.useState(false);
 
+  const gameUrl =
+    `${process.env.APP_GAME_BASE_URL}/v0/casino/games/launch` +
+    `?gameId=${process.env.APP_GAME_ID}` +
+    `&channel=desktop` +
+    `&partnerKey=${process.env.APP_PARTNER_KEY}` +
+    `&lobbyUrl=${encodeURIComponent(process.env.APP_LOBBY_URL)}` +
+    `&mode=demo` +
+    `&language=${lang}`;
+
+  console.log(gameUrl);
+
   return (
     <MainSection>
       <AppImage component="img" src={BrandImage} maxWidth={264} />
@@ -57,7 +68,7 @@ export default function Main() {
       <GameModal
         open={openGame}
         onClose={() => setOpenGame(false)}
-        url={`https://gateway.eva-digital-playground.com/v0/casino/games/launch?gameId=n2-novomatic-book-of-ra-deluxe&channel=desktop&partnerKey=0wl&lobbyUrl=https://chinchincasino.com&mode=demo&language=${lang}`}
+        url={gameUrl}
         size={{ mode: "boxed", width: 900, height: 560 }}
       />
     </MainSection>
