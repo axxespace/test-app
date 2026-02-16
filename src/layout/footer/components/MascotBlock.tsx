@@ -1,6 +1,6 @@
 import * as React from "react";
 import MascotImage from "@/assets/images/footer/mascot.webp";
-import { Mascot, MascotWrap } from "@/features/footer/styles";
+import { Mascot, MascotWrap } from "@/layout/footer/styles";
 
 export default function MascotBlock() {
   return (

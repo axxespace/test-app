@@ -17,7 +17,10 @@ export const DICT: Record<Lang, Record<string, string>> = {
 
     "footer.socials.title": "Us on social media:",
 
-    "main.openGame": "Open the game"
+    "main.openGame": "Open the game",
+
+    "loader.stillLoading": "Still loading…",
+    "loader.retry": "Retry"
   },
 
   ka: {
@@ -36,7 +39,10 @@ export const DICT: Record<Lang, Record<string, string>> = {
 
     "footer.socials.title": "ჩვენ სოციალურ მედიაში:",
 
-    "main.openGame": "თამაშის გახსნა"
+    "main.openGame": "თამაშის გახსნა",
+
+    "loader.stillLoading": "იტვირთება…",
+    "loader.retry": "ხელახლა ცდა"
   },
 
   de: {
@@ -55,7 +61,10 @@ export const DICT: Record<Lang, Record<string, string>> = {
 
     "footer.socials.title": "Wir in den sozialen Medien:",
 
-    "main.openGame": "Spiel öffnen"
+    "main.openGame": "Spiel öffnen",
+
+    "loader.stillLoading": "Wird noch geladen…",
+    "loader.retry": "Erneut versuchen"
   },
 
   it: {
@@ -74,7 +83,10 @@ export const DICT: Record<Lang, Record<string, string>> = {
 
     "footer.socials.title": "Sui social media:",
 
-    "main.openGame": "Apri il gioco"
+    "main.openGame": "Apri il gioco",
+
+    "loader.stillLoading": "Ancora in caricamento…",
+    "loader.retry": "Riprova"
   },
 
   ru: {
@@ -93,6 +105,9 @@ export const DICT: Record<Lang, Record<string, string>> = {
 
     "footer.socials.title": "Мы в социальных сетях:",
 
-    "main.openGame": "Открыть игру"
+    "main.openGame": "Открыть игру",
+
+    "loader.stillLoading": "Все еще загружается…",
+    "loader.retry": "Повторить"
   }
 };

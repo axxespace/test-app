@@ -7,7 +7,7 @@ import BrandImage from "@/assets/images/logo.webp";
 import DownloadIcon from "@/assets/icons/footer/download.svg";
 
 import { useI18n } from "@/shared/i18n";
-import { PromoCardWrap, SpotterBorderSvg, Subtitle, Title } from "@/features/footer/styles";
+import { PromoCardWrap, SpotterBorderSvg, Subtitle, Title } from "@/layout/footer/styles";
 
 export default function PromoCard() {
   const { t, lang } = useI18n();
