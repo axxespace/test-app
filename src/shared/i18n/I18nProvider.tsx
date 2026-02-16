@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useMemo, useCallback, useState, useEffect, ReactNode } from "react";
 import { DICT, type Lang } from "./dict";
 import { format, type Params } from "./format";
 import { I18nContext } from "./context";
@@ -9,11 +9,11 @@ export function I18nProvider({
   defaultLang = "en",
   storageKey = "app_lang"
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   defaultLang?: Lang;
   storageKey?: string;
 }) {
-  const [lang, setLangState] = React.useState<Lang>(() => {
+  const [lang, setLangState] = useState<Lang>(() => {
     const fromPath = getLangFromPathname(window.location.pathname);
     if (fromPath) return fromPath;
 
@@ -23,11 +23,11 @@ export function I18nProvider({
     return defaultLang;
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const current = getLangFromPathname(window.location.pathname);
     if (!current) {
       const nextUrl = buildPathWithLang(
@@ -40,7 +40,7 @@ export function I18nProvider({
     }
   }, [lang]);
 
-  const setLang = React.useCallback(
+  const setLang = useCallback(
     (l: Lang) => {
       setLangState(l);
       localStorage.setItem(storageKey, l);
@@ -58,7 +58,7 @@ export function I18nProvider({
     [storageKey]
   );
 
-  const t = React.useCallback(
+  const t = useCallback(
     (key: string, params?: Params) => {
       const str = DICT[lang]?.[key] ?? DICT[defaultLang]?.[key] ?? key;
       return format(str, params);
@@ -66,7 +66,7 @@ export function I18nProvider({
     [lang, defaultLang]
   );
 
-  const value = React.useMemo(() => ({ lang, setLang, t }), [lang, setLang, t]);
+  const value = useMemo(() => ({ lang, setLang, t }), [lang, setLang, t]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
