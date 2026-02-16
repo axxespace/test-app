@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import type { Lang } from "./dict";
-import type { Params } from "./format";
+import type { Lang } from "@/shared/i18n/dict";
+import type { Params } from "@/shared/i18n/format";
 
 export type I18nContextValue = {
   lang: Lang;

@@ -1,4 +1,4 @@
-import { DICT, type Lang } from "./dict";
+import { DICT, type Lang } from "@/shared/i18n/dict";
 
 export function isLang(x: unknown): x is Lang {
   return typeof x === "string" && Object.prototype.hasOwnProperty.call(DICT, x);

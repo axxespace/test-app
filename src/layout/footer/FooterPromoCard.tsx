@@ -7,9 +7,9 @@ import BrandImage from "@/assets/images/logo.webp";
 import DownloadIcon from "@/assets/icons/footer/download.svg";
 
 import { useI18n } from "@/shared/i18n";
-import { PromoCardWrap, SpotterBorderSvg, Subtitle, Title } from "@/layout/footer/styles";
+import { PromoCardWrap, SpotterBorderSvg, Subtitle, Title } from "@/layout/footer/footer.styles";
 
-export default function PromoCard() {
+export default function FooterPromoCard() {
   const { t, lang } = useI18n();
 
   const strokeWidth = 0.8;

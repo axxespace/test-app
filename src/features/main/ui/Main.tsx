@@ -1,14 +1,14 @@
 import { useState, useMemo } from "react";
 
 import { GradientButton } from "@/shared/ui/common";
-import GameModal from "@/features/game/components/GameModal";
+import { GameModal } from "@/features/game-modal";
 import { useI18n } from "@/shared/i18n";
 
 import BrandImage from "@/assets/images/logo.webp";
 import SlotImage from "@/assets/images/main/slot.webp";
 
-import { MainSection } from "./MainSection";
-import { buildGameUrl } from "../buildGameUrl";
+import { MainStyles } from "@/features/main/ui/MainStyles";
+import { buildGameUrl } from "@/features/main/utils/buildGameUrl";
 import { AppImageWithSkeleton } from "@/shared/ui/AppImageWithSkeleton";
 
 export default function Main() {
@@ -18,7 +18,7 @@ export default function Main() {
   const gameUrl = useMemo(() => buildGameUrl(lang), [lang]);
 
   return (
-    <MainSection>
+    <MainStyles>
       <AppImageWithSkeleton
         width={264}
         height={110}
@@ -52,6 +52,6 @@ export default function Main() {
         url={gameUrl}
         size={{ mode: "boxed", width: 900, height: 560 }}
       />
-    </MainSection>
+    </MainStyles>
   );
 }

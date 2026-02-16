@@ -1,9 +1,9 @@
 import * as React from "react";
-import { INFO } from "@/layout/footer/constants";
+import { INFO } from "@/layout/footer/footer.constants";
 import { useI18n } from "@/shared/i18n";
-import { InfoIcon, InfoRow, InfoText, Mid } from "@/layout/footer/styles";
+import { InfoIcon, InfoRow, InfoText, Mid } from "@/layout/footer/footer.styles";
 
-export default function InfoBlock() {
+export default function FooterInfo() {
   const { t } = useI18n();
 
   return (

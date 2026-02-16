@@ -106,7 +106,7 @@ Production files will be generated in: /dist
 
 `npm run lint`
 
-### use prettier
+### Use prettier
 
 `npm run format`
 
