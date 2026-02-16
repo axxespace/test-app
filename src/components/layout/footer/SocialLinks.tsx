@@ -15,7 +15,13 @@ export default function SocialLinks() {
 
   return (
     <SocialRow>
-      <Typography variant="caption" sx={{ fontSize: 16, color: "#BABABA", lineHeight: 1 }}>
+      <Typography
+        variant="caption"
+        sx={(theme) => ({
+          color: theme.custom.footer.icon,
+          lineHeight: 1
+        })}
+      >
         {t("footer.socials.title")}
       </Typography>
 

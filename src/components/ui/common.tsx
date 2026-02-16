@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Box, Button } from "@mui/material";
 import type { BoxProps } from "@mui/material/Box";
 import type { ButtonProps } from "@mui/material/Button";
@@ -25,23 +24,25 @@ type GradientButtonProps = ButtonProps & {
 
 export const GradientButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== "btnWidth"
-})<GradientButtonProps>(({ btnWidth = 250 }) => ({
+})<GradientButtonProps>(({ theme, btnWidth = 250 }) => ({
   display: "flex",
   width: btnWidth,
   height: 56,
   borderRadius: 12,
   padding: "8px 24px",
   gap: 15,
-  color: "#fff",
+  color: theme.custom.button.text,
   boxShadow: "none",
-  background: "linear-gradient(to right, #FF8D6B, #FFBA47)",
+  background: theme.custom.gradients.primaryButton,
   fontSize: 16,
-  textTransform: "uppercase",
+  textTransform: "lowercase",
+
   "&:hover": {
-    background: "linear-gradient(to right, #FF8D6B, #FFBA47)",
+    background: theme.custom.gradients.primaryButton,
     opacity: 0.9,
     boxShadow: "none"
   },
+
   "&:active": {
     opacity: 0.85
   }

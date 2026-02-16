@@ -11,13 +11,13 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/material/styles";
 
-const Frame = styled("iframe")({
+const Frame = styled("iframe")(({ theme }) => ({
   width: "100%",
   height: "100%",
   border: 0,
   display: "block",
-  background: "#000"
-});
+  background: theme.custom.modal.bg
+}));
 
 type GameModalSize =
   | { mode: "fullscreen" }
@@ -72,18 +72,14 @@ export default function GameModal({
   React.useEffect(() => {
     if (!open) return;
 
-    if (timeoutRef.current) {
-      window.clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
 
     timeoutRef.current = window.setTimeout(() => {
       setShowRetry(true);
     }, loadTimeoutMs);
 
     return () => {
-      if (timeoutRef.current) {
-        window.clearTimeout(timeoutRef.current);
-      }
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
     };
   }, [open, url, iframeKey, loadTimeoutMs]);
 
@@ -94,9 +90,9 @@ export default function GameModal({
   };
 
   const paperSx = shouldFullScreen
-    ? { bgcolor: "#000" }
+    ? { bgcolor: "custom.modal.bg" }
     : {
-        bgcolor: "#000",
+        bgcolor: "custom.modal.bg",
         width: size.mode === "boxed" ? (size.width ?? 980) : 980,
         height: size.mode === "boxed" ? (size.height ?? 620) : 620,
         maxWidth: "96vw",
@@ -125,9 +121,9 @@ export default function GameModal({
             top: 14,
             right: 14,
             zIndex: 100,
-            color: "#fff",
-            backgroundColor: "rgba(0,0,0,0.35)",
-            "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" }
+            color: "common.white",
+            backgroundColor: "custom.modal.closeBg",
+            "&:hover": { backgroundColor: "custom.modal.closeHoverBg" }
           }}
         >
           <CloseIcon />
@@ -143,7 +139,6 @@ export default function GameModal({
                 window.clearTimeout(timeoutRef.current);
                 timeoutRef.current = null;
               }
-
               requestAnimationFrame(() => {
                 setLoading(false);
                 setShowRetry(false);
@@ -162,7 +157,7 @@ export default function GameModal({
               zIndex: 2,
               display: "grid",
               placeItems: "center",
-              backgroundColor: "rgba(0,0,0,0.55)",
+              backgroundColor: "custom.modal.overlayBg",
               backdropFilter: "blur(2px)"
             }}
           >
@@ -170,7 +165,7 @@ export default function GameModal({
               <CircularProgress />
               {showRetry && (
                 <>
-                  <Typography sx={{ color: "#fff", fontWeight: 700, mt: 2 }}>
+                  <Typography sx={{ color: "common.white", fontWeight: 700, mt: 2 }}>
                     Still loading…
                   </Typography>
                   <Button variant="contained" sx={{ mt: 2 }} onClick={handleRetry}>

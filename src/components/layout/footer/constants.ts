@@ -1,4 +1,3 @@
-// src/components/layout/footer/constants.ts
 import type { Lang } from "@/i18n/I18nProvider";
 
 import LicenseIcon from "@/assets/footer/license.svg";

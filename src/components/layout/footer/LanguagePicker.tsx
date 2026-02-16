@@ -33,14 +33,26 @@ export default function LanguagePicker() {
       renderValue={(value) => (
         <SelectValue>
           <Flag src={FLAGS[value]} alt="" aria-hidden />
-          <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{t(langKey(value))}</Typography>
+          <Typography
+            sx={(theme) => ({
+              color: theme.custom.footer.icon
+            })}
+          >
+            {t(langKey(value))}
+          </Typography>
         </SelectValue>
       )}
     >
       {LANGS.map((l) => (
         <MenuItem key={l} value={l} sx={{ gap: 1 }}>
           <FlagSmall src={FLAGS[l]} alt="" aria-hidden />
-          <Typography sx={{ color: "#BABABA", fontSize: 16 }}>{t(langKey(l))}</Typography>
+          <Typography
+            sx={(theme) => ({
+              color: theme.custom.footer.icon
+            })}
+          >
+            {t(langKey(l))}
+          </Typography>
         </MenuItem>
       ))}
     </LanguageSelect>

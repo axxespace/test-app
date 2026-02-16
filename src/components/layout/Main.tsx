@@ -45,7 +45,12 @@ export default function Main() {
       <AppImage component="img" src={BrandImage} maxWidth={264} />
       <AppImage component="img" src={SlotImage} sx={{ maxWidth: "326px", mt: "48px" }} />
 
-      <GradientButton onClick={() => setOpenGame(true)} btnWidth={"358px"} disableElevation>
+      <GradientButton
+        onClick={() => setOpenGame(true)}
+        btnWidth={"358px"}
+        sx={{ textTransform: "uppercase" }}
+        disableElevation
+      >
         {t("main.openGame")}
       </GradientButton>
 
