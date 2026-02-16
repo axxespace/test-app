@@ -19,8 +19,8 @@ function loadDotEnv(file = ".env") {
     let value = line.slice(eq + 1).trim();
 
     if (
-        (value.startsWith('"') && value.endsWith('"')) ||
-        (value.startsWith("'") && value.endsWith("'"))
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
     ) {
       value = value.slice(1, -1);
     }
@@ -32,11 +32,11 @@ function loadDotEnv(file = ".env") {
 loadDotEnv();
 
 const APP_ENV = Object.keys(process.env)
-    .filter((k) => k.startsWith("APP_"))
-    .reduce((acc, k) => {
-      acc[k] = process.env[k];
-      return acc;
-    }, {});
+  .filter((k) => k.startsWith("APP_"))
+  .reduce((acc, k) => {
+    acc[k] = process.env[k];
+    return acc;
+  }, {});
 
 APP_ENV.NODE_ENV = process.env.NODE_ENV || "development";
 
@@ -50,14 +50,12 @@ export default {
   output: {
     path: path.resolve(process.cwd(), "dist"),
     filename: isProd ? "js/[name].[contenthash:8].js" : "js/[name].js",
-    chunkFilename: isProd
-        ? "js/[name].[contenthash:8].chunk.js"
-        : "js/[name].chunk.js",
+    chunkFilename: isProd ? "js/[name].[contenthash:8].chunk.js" : "js/[name].chunk.js",
     assetModuleFilename: isProd
-        ? "assets/[name].[contenthash:8][ext][query]"
-        : "assets/[name][ext][query]",
+      ? "assets/[name].[contenthash:8][ext][query]"
+      : "assets/[name][ext][query]",
     clean: true,
-    publicPath: "/",
+    publicPath: "/"
   },
 
   devtool: isProd ? false : "source-map",
@@ -65,9 +63,9 @@ export default {
   resolve: {
     alias: {
       "@": path.resolve(process.cwd(), "src"),
-      "@mui/styled-engine": "@mui/styled-engine-sc",
+      "@mui/styled-engine": "@mui/styled-engine-sc"
     },
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js"]
   },
 
   module: {
@@ -81,40 +79,41 @@ export default {
             presets: [
               ["@babel/preset-env", { targets: "defaults" }],
               ["@babel/preset-react", { runtime: "automatic" }],
-              ["@babel/preset-typescript"],
+              ["@babel/preset-typescript"]
             ],
-            plugins: [["babel-plugin-styled-components", { pure: true }]],
-          },
-        },
+            plugins: [["babel-plugin-styled-components", { pure: true }]]
+          }
+        }
       },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
       { test: /\.(png|jpg|jpeg|svg|webp)$/i, type: "asset/resource" },
-      { test: /\.(woff2?|eot|ttf|otf)$/i, type: "asset/resource" },
-    ],
+      { test: /\.(woff2?|eot|ttf|otf)$/i, type: "asset/resource" }
+    ]
   },
 
   optimization: isProd
-      ? {
+    ? {
         splitChunks: { chunks: "all" },
         runtimeChunk: "single",
-        moduleIds: "deterministic",
+        moduleIds: "deterministic"
       }
-      : undefined,
+    : undefined,
+
+  performance: false,
 
   devServer: {
     historyApiFallback: true,
     port: 3000,
     hot: true,
-    client: { overlay: true },
+    client: { overlay: true }
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(process.cwd(), "public/index.html"),
+      template: path.resolve(process.cwd(), "public/index.html")
     }),
     new webpack.DefinePlugin({
-      process: JSON.stringify({ env: APP_ENV }),
-      "process.env": JSON.stringify(APP_ENV),
-    }),
-  ],
+      "process.env": JSON.stringify(APP_ENV)
+    })
+  ]
 };

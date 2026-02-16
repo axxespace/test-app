@@ -2,12 +2,7 @@ import * as React from "react";
 import { Typography } from "@mui/material";
 
 import { SOCIALS } from "@/features/footer/constants";
-import {
-  SocialButton,
-  SocialButtons,
-  SocialIcon,
-  SocialRow
-} from "@/features/footer/styles";
+import { SocialButton, SocialButtons, SocialIcon, SocialRow } from "@/features/footer/styles";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
 export default function SocialLinks() {

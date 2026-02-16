@@ -17,25 +17,30 @@ export default function Main() {
   const gameUrl = React.useMemo(() => buildGameUrl(lang), [lang]);
 
   return (
-      <MainSection>
-        <AppImage component="img" alt="logo image" src={BrandImage} maxWidth={264} />
-        <AppImage component="img" alt="slot image" src={SlotImage} sx={{ maxWidth: "326px", mt: "48px" }} />
+    <MainSection>
+      <AppImage component="img" alt="logo image" src={BrandImage} maxWidth={264} />
+      <AppImage
+        component="img"
+        alt="slot image"
+        src={SlotImage}
+        sx={{ maxWidth: "326px", mt: "48px" }}
+      />
 
-        <GradientButton
-            onClick={() => setOpenGame(true)}
-            btnWidth="358px"
-            sx={{ textTransform: "uppercase" }}
-            disableElevation
-        >
-          {t("main.openGame")}
-        </GradientButton>
+      <GradientButton
+        onClick={() => setOpenGame(true)}
+        btnWidth="358px"
+        sx={{ textTransform: "uppercase" }}
+        disableElevation
+      >
+        {t("main.openGame")}
+      </GradientButton>
 
-        <GameModal
-            open={openGame}
-            onClose={() => setOpenGame(false)}
-            url={gameUrl}
-            size={{ mode: "boxed", width: 900, height: 560 }}
-        />
-      </MainSection>
+      <GameModal
+        open={openGame}
+        onClose={() => setOpenGame(false)}
+        url={gameUrl}
+        size={{ mode: "boxed", width: 900, height: 560 }}
+      />
+    </MainSection>
   );
 }

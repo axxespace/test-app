@@ -7,12 +7,7 @@ import BrandImage from "@/assets/images/footer/brand.png";
 import DownloadIcon from "@/assets/icons/footer/download.svg";
 
 import { useI18n } from "@/shared/i18n/I18nProvider";
-import {
-  PromoCardWrap,
-  SpotterBorderSvg,
-  Subtitle,
-  Title
-} from "@/features/footer/styles";
+import { PromoCardWrap, SpotterBorderSvg, Subtitle, Title } from "@/features/footer/styles";
 
 export default function PromoCard() {
   const { t } = useI18n();
@@ -45,7 +40,13 @@ export default function PromoCard() {
       <Subtitle>{t("footer.promo.subtitle")}</Subtitle>
 
       <GradientButton sx={{ margin: "18px auto" }} disableElevation>
-        <Box component="img" src={DownloadIcon} alt="download icon" aria-hidden sx={{ width: 24 }} />
+        <Box
+          component="img"
+          src={DownloadIcon}
+          alt="download icon"
+          aria-hidden
+          sx={{ width: 24 }}
+        />
         {t("footer.promo.install")}
       </GradientButton>
     </PromoCardWrap>
