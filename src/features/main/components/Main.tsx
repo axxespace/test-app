@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 
 import { GradientButton } from "@/shared/ui/common";
-import GameModal from "@/features/main/components/game/components/GameModal";
+import GameModal from "@/features/game/components/GameModal";
 import { useI18n } from "@/shared/i18n";
 
 import BrandImage from "@/assets/images/logo.webp";

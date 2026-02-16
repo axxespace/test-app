@@ -2,8 +2,8 @@ import * as React from "react";
 import { MenuItem, Typography } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material/Select";
 
-import { FLAGS, LANGS, langKey } from "@/features/footer/constants";
-import { Flag, FlagSmall, LanguageSelect, SelectValue } from "@/features/footer/styles";
+import { FLAGS, LANGS, langKey } from "@/layout/footer/constants";
+import { Flag, FlagSmall, LanguageSelect, SelectValue } from "@/layout/footer/styles";
 import { type Lang } from "@/shared/i18n/dict";
 import { useI18n } from "@/shared/i18n";
 

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Box, CircularProgress, Typography, Button } from "@mui/material";
+import { useI18n } from "@/shared/i18n";
 
 type LoaderOverlayProps = {
   loading: boolean;
@@ -9,6 +10,7 @@ type LoaderOverlayProps = {
 
 export default function LoaderOverlay({ loading, showRetry, onRetry }: LoaderOverlayProps) {
   if (!loading) return null;
+  const { t } = useI18n();
 
   return (
     <Box
@@ -27,10 +29,10 @@ export default function LoaderOverlay({ loading, showRetry, onRetry }: LoaderOve
         {showRetry && (
           <>
             <Typography sx={{ color: "common.white", fontWeight: 700, mt: 2 }}>
-              Still loading…
+              {t("loader.stillLoading")}
             </Typography>
             <Button variant="contained" sx={{ mt: 2 }} onClick={onRetry}>
-              Retry
+              {t("loader.retry")}
             </Button>
           </>
         )}

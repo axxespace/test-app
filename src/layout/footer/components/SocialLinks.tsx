@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Typography } from "@mui/material";
 
-import { SOCIALS } from "@/features/footer/constants";
-import { SocialButton, SocialButtons, SocialIcon, SocialRow } from "@/features/footer/styles";
+import { SOCIALS } from "@/layout/footer/constants";
+import { SocialButton, SocialButtons, SocialIcon, SocialRow } from "@/layout/footer/styles";
 import { useI18n } from "@/shared/i18n";
 
 export default function SocialLinks() {
