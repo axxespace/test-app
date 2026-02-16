@@ -5,9 +5,8 @@ import type { GameModalSize } from "./GameModal";
 export const Frame = styled("iframe")(({ theme }) => ({
   width: "100%",
   height: "100%",
-  border: 0,
   display: "block",
-  background: (theme as any).custom?.modal?.bg
+  background: theme.custom.modal.bg
 }));
 
 export function getPaperSx({
