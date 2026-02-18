@@ -1,8 +1,8 @@
 import { useMemo, useCallback, useState, useEffect, ReactNode } from "react";
-import { DICT, type Lang } from "./dict";
-import { format, type Params } from "./format";
-import { I18nContext } from "./context";
-import { buildPathWithLang, getLangFromPathname, isLang } from "./url";
+import { DICT, type Lang } from "@/shared/i18n/dict";
+import { format, type Params } from "@/shared/i18n/format";
+import { I18nContext } from "@/shared/i18n/context";
+import { buildPathWithLang, getLangFromPathname, isLang } from "@/shared/i18n/url";
 
 export function I18nProvider({
   children,

@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import BackgroundImage from "@/assets/images/main/background.webp";
 
-export const MainSection = styled("main")(({ theme }) => ({
+export const MainStyles = styled("main")(({ theme }) => ({
   height: 910,
   display: "flex",
   flexDirection: "column",

@@ -5,7 +5,7 @@ export function buildGameUrl(lang: string) {
   const lobbyUrl = process.env.APP_LOBBY_URL;
 
   if (!base || !gameId || !partnerKey || !lobbyUrl) {
-    throw new Error("Missing required APP_* env variables for game URL");
+    throw new Error("Missing required APP_* env variables for game-modal URL");
   }
 
   const params = new URLSearchParams({

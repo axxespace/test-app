@@ -2,8 +2,8 @@ import * as React from "react";
 import { MenuItem, Typography } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material/Select";
 
-import { FLAGS, LANGS, langKey } from "@/layout/footer/constants";
-import { Flag, FlagSmall, LanguageSelect, SelectValue } from "@/layout/footer/styles";
+import { FLAGS, LANGS, langKey } from "@/layout/footer/footer.constants";
+import { Flag, FlagSmall, LanguageSelect, SelectValue } from "@/layout/footer/footer.styles";
 import { type Lang } from "@/shared/i18n/dict";
 import { useI18n } from "@/shared/i18n";
 
@@ -19,7 +19,7 @@ const SelectChevron = () => (
   </svg>
 );
 
-export default function LanguagePicker() {
+export default function FooterLanguagePicker() {
   const { lang, setLang, t } = useI18n();
 
   const handleLangChange = (e: SelectChangeEvent<Lang>) => {
