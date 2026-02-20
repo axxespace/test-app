@@ -38,7 +38,7 @@ export const GradientButton = styled(Button, {
   boxShadow: "none",
   background: theme.custom.language.buttonBg[lang],
   fontSize: 16,
-  textTransform: "lowercase",
+  textTransform: "capitalize",
 
   "&:hover": {
     opacity: 0.9,

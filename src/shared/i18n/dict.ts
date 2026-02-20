@@ -17,7 +17,7 @@ export const DICT: Record<Lang, Record<string, string>> = {
 
     "footer.socials.title": "Us on social media:",
 
-    "main.openGame": "Open the game-modal",
+    "main.openGame": "Open the game",
 
     "loader.stillLoading": "Still loading…",
     "loader.retry": "Retry"
