@@ -50,7 +50,6 @@ export default function Main() {
         open={openGame}
         onClose={() => setOpenGame(false)}
         url={gameUrl}
-        size={{ mode: "boxed", width: 900, height: 560 }}
       />
     </MainStyles>
   );
